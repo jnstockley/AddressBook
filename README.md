@@ -1,4 +1,7 @@
 # AddressBook
+## Version 2.5 Release Tomorrow!!!!
+I have tested the new backend of AddressBook and plan on releasing it early tomorrow! I want to make some changes to the grammar in the javadoc! I also plan on updating this README with how to use the program etc.
+
 ## Version 2.5 On the Way!!!!
   I have just finished re-writing the backend of the AddressBook program for the most part. There are still a few quality of life improvements I would like to add plus I need to test the program. This update is going to be mostly a quality of life and overall improvement update! The major function will now only take the given object ex. Person object instead of all the values individual values. Also the program will perform more checks on given data and returned data to lessen the likely hood of bugs popping up! I am hoping to release it within the next few days! 
  
