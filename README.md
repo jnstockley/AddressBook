@@ -10,6 +10,9 @@ I have just released version 2.5! This program has many improvemnts over the las
 The spilt of the backend and the frontend is to help allow me and anyone who wants to use this easier access to the core functions of the program! Also updates should be more reqular, when needed, to the backend since I don't have to work on the frontend and REST interface at the same time!
 
 ## What do I need to know?
+### What's in the javadoc?
+The javadoc is very useful. It expalins what each function does as well as describe each object breifely. For some functions it explains what field are required for each object. Ex in a person object you can keep the firstName string empty and the program will use the exisiting persons firstName when updating a given person etc.
+
 ### How can I include this program in my java project.
 If you want to use this then the easiest way is to download the jar file either in the code section or from the releases tab. Both will be updated at the same time. Once downloaded all you need to do is include the jar in your build path and import it as needed!
 
