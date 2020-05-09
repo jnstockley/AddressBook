@@ -1,418 +1,320 @@
-package com.jackstockley.addressbook;
+package jackstockley.addressbook;
 
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
-import org.apache.commons.lang3.text.WordUtils;
 
 /**
- * This part of the program interacts directly with the person table of the MySQL database and allows the user to perform full CRUD
+ * This class holds all the necessary commands to create a person object,
+ * and to perform full CRUD on the person table of a given database.
  * @author jnstockley
- * @version 2.1
- *
+ * @version 2.5
  */
-
-@SuppressWarnings("deprecation")
 public class Person {
+
 	private int id;
-
 	private String firstName;
-
 	private String middleName;
-
 	private String lastName;
-
 	private String homePhone;
-
 	private String mobilePhone;
-
 	private String workPhone;
-
 	private String homeEmail;
-
 	private String workEmail;
-
 	private double height;
-
 	private double weight;
-
 	private String gender;
-
 	private String race;
-
 	private int addressId;
-
-	private int number;
-
-	private String street;
-
-	private String city;
-
-	private String state;
-
-	private String zip;
-
 	private int occupationId;
-
-	private String companyName;
-
-	private String jobTitle;
-
-	private String employmentType;
-
-	private String monthlySalary;
-
-	private String industry;
-
 	private String date;
-
 	private String time;
 
-	public String getDate() {
-		return this.date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	public String getTime() {
-		return this.time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
 	public int getId() {
-		return this.id;
+		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
 	public String getFirstName() {
-		return this.firstName;
+		return firstName;
 	}
-
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
-
 	public String getMiddleName() {
-		return this.middleName;
+		return middleName;
 	}
-
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
-
 	public String getLastName() {
-		return this.lastName;
+		return lastName;
 	}
-
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
 	public String getHomePhone() {
-		return this.homePhone;
+		return homePhone;
 	}
-
 	public void setHomePhone(String homePhone) {
 		this.homePhone = homePhone;
 	}
-
 	public String getMobilePhone() {
-		return this.mobilePhone;
+		return mobilePhone;
 	}
-
 	public void setMobilePhone(String mobilePhone) {
 		this.mobilePhone = mobilePhone;
 	}
-
 	public String getWorkPhone() {
-		return this.workPhone;
+		return workPhone;
 	}
-
 	public void setWorkPhone(String workPhone) {
 		this.workPhone = workPhone;
 	}
-
 	public String getHomeEmail() {
-		return this.homeEmail;
+		return homeEmail;
 	}
-
 	public void setHomeEmail(String homeEmail) {
 		this.homeEmail = homeEmail;
 	}
-
 	public String getWorkEmail() {
-		return this.workEmail;
+		return workEmail;
 	}
-
 	public void setWorkEmail(String workEmail) {
 		this.workEmail = workEmail;
 	}
-
 	public double getHeight() {
-		return this.height;
+		return height;
 	}
-
 	public void setHeight(double height) {
 		this.height = height;
 	}
-
 	public double getWeight() {
-		return this.weight;
+		return weight;
 	}
-
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
-
 	public String getGender() {
-		return this.gender;
+		return gender;
 	}
-
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-
 	public String getRace() {
-		return this.race;
+		return race;
 	}
-
 	public void setRace(String race) {
 		this.race = race;
 	}
-
 	public int getAddressId() {
-		return this.addressId;
+		return addressId;
 	}
-
 	public void setAddressId(int addressId) {
 		this.addressId = addressId;
 	}
-
 	public int getOccupationId() {
-		return this.occupationId;
+		return occupationId;
 	}
-
 	public void setOccupationId(int occupationId) {
 		this.occupationId = occupationId;
 	}
-
-	public int getNumber() {
-		return this.number;
+	public String getDate() {
+		return date;
 	}
-
-	public void setNumber(int number) {
-		this.number = number;
+	public void setDate(String date) {
+		this.date = date;
 	}
-
-	public String getStreet() {
-		return this.street;
+	public String getTime() {
+		return time;
 	}
-
-	public void setStreet(String street) {
-		this.street = street;
-	}
-
-	public String getCity() {
-		return this.city;
-	}
-
-	public void setCity(String city) {
-		this.city = city;
-	}
-
-	public String getState() {
-		return this.state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getZip() {
-		return this.zip;
-	}
-
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-
-	public String getCompanyName() {
-		return this.companyName;
-	}
-
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
-
-	public String getJobTitle() {
-		return this.jobTitle;
-	}
-
-	public void setJobTitle(String jobTitle) {
-		this.jobTitle = jobTitle;
-	}
-
-	public String getEmploymentType() {
-		return this.employmentType;
-	}
-
-	public void setEmploymentType(String employmentType) {
-		this.employmentType = employmentType;
-	}
-
-	public String getMonthlySalary() {
-		return this.monthlySalary;
-	}
-
-	public void setMonthlySalary(String monthlySalary) {
-		this.monthlySalary = monthlySalary;
-	}
-
-	public String getIndustry() {
-		return this.industry;
-	}
-
-	public void setIndustry(String industry) {
-		this.industry = industry;
-	}
-
-	//TODO Improve toString()
-	/**
-	 * Overrides the built in toString method and returns the person and the address and occupation that are tied to the person
-	 * Also formats phone numbers and dollar amounts to make them readable to the user
-	 */
-	public String toString() {
-		String firstNameF = WordUtils.capitalize(this.getFirstName());
-		String middleNameF = WordUtils.capitalize(this.getMiddleName());
-		String lastNameF = WordUtils.capitalize(this.getLastName());
-		String homePhoneF = String.valueOf(this.getHomePhone().substring(0, 3)) + '-' + this.getHomePhone().substring(3, 6) + '-' + this.getHomePhone().substring(6);
-		String mobilePhoneF = String.valueOf(this.getMobilePhone().substring(0, 3)) + '-' + this.getMobilePhone().substring(3, 6) + '-' + this.getMobilePhone().substring(6);
-		String workPhoneF = String.valueOf(this.getWorkPhone().substring(0, 3)) + '-' + this.getWorkPhone().substring(3, 6) + '-' + this.getWorkPhone().substring(6);
-		String genderF = WordUtils.capitalize(this.getGender());
-		String raceF = WordUtils.capitalize(this.getRace());
-		Address address = new Address(this.getAddressId(), this.getNumber(), this.getStreet(), this.getCity(), this.getState(), this.getZip());
-		String addressS = address.toString().substring(0, address.toString().indexOf("Date Created"));
-		Occupation occupation = new Occupation(this.getOccupationId(), this.getCompanyName(), this.getJobTitle(), this.getEmploymentType(), this.getMonthlySalary(), this.getIndustry());
-		String occupationS = occupation.toString().substring(0, occupation.toString().indexOf("Date Created"));
-		return "ID: " + this.getId() + " " + firstNameF + " " + middleNameF + " " + lastNameF + "\nHome Phone Number: " + homePhoneF + " Mobile Phone Number: " + mobilePhoneF + " Work Phone Number: " + workPhoneF + "\nHome Email: " + getHomeEmail() + " Work Email: " + getWorkEmail() + "\nHeight: " + getHeight() + " cm Weight: " + getWeight() + " lb Gender: " + genderF + " Race: " + raceF + "\nDate Created: " + getDate() + " Time Created: " + getTime() + "\n\n" + addressS + "\n"+ occupationS;
+	public void setTime(String time) {
+		this.time = time;
 	}
 	
+	@Override
 	/**
-	 * Override the built in equals methods and checks each of the fields to make sure they are the same ignoring case
-	 * @param person The person that is being compared to 
-	 * @return True if the two people are equal otherwise false
+	 * Prints out the person object with formatting for better human readability
+	 */
+	public String toString() {
+		return "ID: " + this.getId() + "\n" + this.getFirstName() + " " + this.getMiddleName() + " " + this.getLastName() 
+			+ "\nHome Phone: " + this.getHomePhone() + " Mobile Phone: " + this.getMobilePhone() + " Work Phone: " + this.getWorkPhone()
+			+ "\nHome Email: " + this.getHomeEmail() + " Work Email: " + this.getWorkEmail() 
+			+ "\nHeight: " + this.getHeight() + " Weight: " + this.getWeight() + " Gender: " + this.getGender() + " Race: " + this.getRace()
+			+ "\nAddress ID: " + this.getAddressId() +  " OccupationID: " + this.getOccupationId() + " Date Created: " + this.getDate() + " Time Created: " + this.getTime() + "\n"; 
+	}
+
+	/**
+	 * Checks all the fields of both people and checks if they are equal ignoring case
+	 * @param person The person that is being checked
+	 * @return Either true if all the fields are equal or false if at least one field is different
 	 */
 	public boolean equals(Person person) {
-		if (this.getId() == person.getId() && this.getFirstName().equalsIgnoreCase(person.getFirstName()) && this.getMiddleName().equalsIgnoreCase(person.getMiddleName()) && this.getLastName().equalsIgnoreCase(person.getLastName()) && this.getHomePhone().equalsIgnoreCase(person.getHomePhone()) && this.getMobilePhone().equalsIgnoreCase(person.getMobilePhone()) && this.getWorkPhone().equalsIgnoreCase(person.getWorkPhone()) && this.getHomeEmail().equalsIgnoreCase(person.getHomeEmail()) && this.getWorkEmail().equalsIgnoreCase(person.getWorkEmail()) && this.getHeight() == person.getHeight() && this.getWeight() == person.getWeight() && this.getGender().equalsIgnoreCase(person.getGender()) && this.getRace().equalsIgnoreCase(person.getRace()) && this.getAddressId() == person.getAddressId() && this.getOccupationId() == person.getOccupationId())
-			return true; 
-		return false;
+		if(this.getFirstName().equalsIgnoreCase(person.getFirstName()) && this.getMiddleName().equalsIgnoreCase(person.getMiddleName()) && this.getLastName().equalsIgnoreCase(person.getLastName()) && this.getHomePhone().equalsIgnoreCase(person.getHomePhone()) && this.getMobilePhone().equalsIgnoreCase(person.getMobilePhone()) && this.getWorkPhone().equalsIgnoreCase(person.getWorkPhone()) && this.getHomeEmail().equalsIgnoreCase(person.getHomeEmail()) && this.getWorkEmail().equalsIgnoreCase(person.getWorkEmail()) && this.getHeight() == person.getHeight() && this.getWeight() == person.getWeight() && this.getGender().equalsIgnoreCase(person.getGender()) && this.getRace().equalsIgnoreCase(person.getRace()) && this.getAddressId() == person.getAddressId() && this.getOccupationId() == person.getOccupationId()) {
+			return true;
+		}else {
+			return false;
+		}
 	}
 
 	/**
-	 * Creates a blank person object with no fields filled in
-	 * Used when getting people from the database
+	 * Creates a person object with all the fields set to either 0, 0.0 or an empty string
 	 */
-	public Person() {}
+	public Person() {
+		this.setId(0);
+		this.setFirstName("");
+		this.setMiddleName("");
+		this.setLastName("");
+		this.setHomePhone("0");
+		this.setMobilePhone("0");
+		this.setWorkPhone("0");
+		this.setHomeEmail("");
+		this.setWorkEmail("");
+		this.setHeight(0.0);
+		this.setWeight(0.0);
+		this.setGender("");
+		this.setRace("");
+		this.setAddressId(0);
+		this.setOccupationId(0);
+		this.setDate("");
+		this.setTime("");
+	}
 
-	//TODO Possibility add conn in order to get data for address and occupation
 	/**
-	 * Creates a new person without an ID but has all the other required fields
-	 * Used when inserting a new person
+	 * Creates a person object with the id and date and time as empty values
 	 * @param firstName The first name of the person
 	 * @param middleName The middle name of the person
 	 * @param lastName The last name of the person
-	 * @param homePhone The home phone of the person
-	 * @param mobilePhone The mobile phone of the person
-	 * @param workPhone The work phone of the person
-	 * @param homeEmail The home or personal email of the person
+	 * @param homePhone The home phone number with no dashes length of 10
+	 * @param mobilePhone The mobile phone number with no dashed length of 10 
+	 * @param workPhone The work phone number with no dashed length of 10
+	 * @param homeEmail The home email of the person
 	 * @param workEmail The work email of the person
-	 * @param height The height in centimeters of the person
-	 * @param weight The weigh in pounds of the person
+	 * @param height The height of the person in centimeters
+	 * @param weight The weight of the person in pounds
 	 * @param gender The gender of the person
 	 * @param race The race of the person
-	 * @param addressId The address ID of the person used when retrieving the address of the person
-	 * @param occupationId The occupation ID of the person used when retrieving the occupation of the person
+	 * @param addressID The address id which corresponds to an address on the database
+	 * @param occupationID The occupation id which corresponds to an occupation on the database
 	 */
-	public Person(String firstName, String middleName, String lastName, String homePhone, String mobilePhone, String workPhone, String homeEmail, String workEmail, double height, double weight, String gender, String race, int addressId, int occupationId) {
-		setFirstName(firstName);
-		setMiddleName(middleName);
-		setLastName(lastName);
-		setHomePhone(homePhone);
-		setMobilePhone(mobilePhone);
-		setWorkPhone(workPhone);
-		setHomeEmail(homeEmail);
-		setWorkEmail(workEmail);
-		setHeight(height);
-		setWeight(weight);
-		setGender(gender);
-		setRace(race);
-		setAddressId(addressId);
-		setOccupationId(occupationId);
+	public Person(String firstName, String middleName, String lastName, String homePhone, String mobilePhone, String workPhone, String homeEmail, String workEmail, double height, double weight, String gender, String race, int addressID, int occupationID) {
+		this.setId(0);
+		this.setFirstName(firstName);
+		this.setMiddleName(middleName);
+		this.setLastName(lastName);
+		this.setHomePhone(homePhone);
+		this.setMobilePhone(mobilePhone);
+		this.setWorkPhone(workPhone);
+		this.setHomeEmail(homeEmail);
+		this.setWorkEmail(workEmail);
+		this.setHeight(height);
+		this.setWeight(weight);
+		this.setGender(gender);
+		this.setRace(race);
+		this.setAddressId(addressID);
+		this.setOccupationId(addressID);
+		this.setDate("");
+		this.setTime("");
 	}
 
-	//TODO Possibility add conn in order to get data for address and occupation
 	/**
-	 * Creates a new person with an ID but has all the other required fields
-	 * @param id The ID of the new person which resides on the MySQL server
+	 * Creates a person object with the date and time as empty fields mainly used for updating a person
+	 * @param id The id of the person
 	 * @param firstName The first name of the person
 	 * @param middleName The middle name of the person
 	 * @param lastName The last name of the person
-	 * @param homePhone The home phone of the person
-	 * @param mobilePhone The mobile phone of the person
-	 * @param workPhone The work phone of the person
-	 * @param homeEmail The home or personal email of the person
+	 * @param homePhone The home phone number with no dashes length of 10
+	 * @param mobilePhone The mobile phone number with no dashed length of 10 
+	 * @param workPhone The work phone number with no dashed length of 10
+	 * @param homeEmail The home email of the person
 	 * @param workEmail The work email of the person
-	 * @param height The height in centimeters of the person
-	 * @param weight The weigh in pounds of the person
+	 * @param height The height of the person in centimeters
+	 * @param weight The weight of the person in pounds
 	 * @param gender The gender of the person
 	 * @param race The race of the person
-	 * @param addressId The address ID of the person used when retrieving the address of the person
-	 * @param occupationId The occupation ID of the person used when retrieving the occupation of the person
+	 * @param addressID The address id which corresponds to an address on the database
+	 * @param occupationID The occupation id which corresponds to an occupation on the database
 	 */
-	public Person(int id, String firstName, String middleName, String lastName, String homePhone, String mobilePhone, String workPhone, String homeEmail, String workEmail, double height, double weight, String gender, String race, int addressId, int occupationId) {
-		setId(id);
-		setFirstName(firstName);
-		setMiddleName(middleName);
-		setLastName(lastName);
-		setHomePhone(homePhone);
-		setMobilePhone(mobilePhone);
-		setWorkPhone(workPhone);
-		setHomeEmail(homeEmail);
-		setWorkEmail(workEmail);
-		setHeight(height);
-		setWeight(weight);
-		setGender(gender);
-		setRace(race);
-		setAddressId(addressId);
-		setOccupationId(occupationId);
+	public Person(int id, String firstName, String middleName, String lastName, String homePhone, String mobilePhone, String workPhone, String homeEmail, String workEmail, double height, double weight, String gender, String race, int addressID, int occupationID) {
+		this.setId(id);
+		this.setFirstName(firstName);
+		this.setMiddleName(middleName);
+		this.setLastName(lastName);
+		this.setHomePhone(homePhone);
+		this.setMobilePhone(mobilePhone);
+		this.setWorkPhone(workPhone);
+		this.setHomeEmail(homeEmail);
+		this.setWorkEmail(workEmail);
+		this.setHeight(height);
+		this.setWeight(weight);
+		this.setGender(gender);
+		this.setRace(race);
+		this.setAddressId(addressID);
+		this.setOccupationId(addressID);
+		this.setDate("");
+		this.setTime("");
 	}
 
 	/**
-	 * Connects to the MySQL server and returns all the people in the database
+	 * Creates a person object with no empty fields mainly used for getting all people
+	 * @param id The id of the person
+	 * @param firstName The first name of the person
+	 * @param middleName The middle name of the person
+	 * @param lastName The last name of the person
+	 * @param homePhone The home phone number with no dashes length of 10
+	 * @param mobilePhone The mobile phone number with no dashed length of 10 
+	 * @param workPhone The work phone number with no dashed length of 10
+	 * @param homeEmail The home email of the person
+	 * @param workEmail The work email of the person
+	 * @param height The height of the person in centimeters
+	 * @param weight The weight of the person in pounds
+	 * @param gender The gender of the person
+	 * @param race The race of the person
+	 * @param addressID The address id which corresponds to an address on the database
+	 * @param occupationID The occupation id which corresponds to an occupation on the database
+	 * @param date The date the person was created
+	 * @param time The time the person was created
+	 */
+	public Person(int id, String firstName, String middleName, String lastName, String homePhone, String mobilePhone, String workPhone, String homeEmail, String workEmail, double height, double weight, String gender, String race, int addressID, int occupationID, String date, String time) {
+		this.setId(0);
+		this.setFirstName(firstName);
+		this.setMiddleName(middleName);
+		this.setLastName(lastName);
+		this.setHomePhone(homePhone);
+		this.setMobilePhone(mobilePhone);
+		this.setWorkPhone(workPhone);
+		this.setHomeEmail(homeEmail);
+		this.setWorkEmail(workEmail);
+		this.setHeight(height);
+		this.setWeight(weight);
+		this.setGender(gender);
+		this.setRace(race);
+		this.setAddressId(addressID);
+		this.setOccupationId(addressID);
+		this.setDate(date);
+		this.setTime(time);
+	}
+
+	/**
+	 * Creates a list of people stored on a database and returns the people list
 	 * @param conn The MySQL connection
-	 * @return A list of people that are stored on the MySQL database
+	 * @return Either returns a list of people or null if there was an error getting all the people
 	 */
-	public static List<Person> getPerson(Connection conn) {
+	public List<Person> getAllPeople(Connection conn){
 		try {
-			if (conn.isValid(0)) { //Checks if the connection is valid
-				List<Person> people = new ArrayList<>(); //List where people from the database will be added to
-				PreparedStatement ps = conn.prepareStatement("SELECT person.id, person.firstName, person.middleName, person.lastName, person.homePhone, person.mobilePhone, person.workPhone, person.homeEmail, person.workEmail, person.height, person.weight, person.gender, person.race, person.date, person.time, address.number, address.street, address.city, address.state, address.zip, occupation.companyName, occupation.jobTitle, occupation.employmentType, occupation.monthlySalary, occupation.industry, address.Id, occupation.Id FROM person inner join address on person.addressId=address.Id inner join occupation on person.occupationId=occupation.Id");
-				ResultSet rs = ps.executeQuery();
-				while (rs.next()) { //Loops through all the people in the database and creates a new person and adds all the required fields then adds the person to the people list
+			if(conn.isValid(30)) { //Checks if the SQL connection is valid
+				List<Person> people = new ArrayList<Person>(); //Creates an empty list of people to store all people on the database
+				PreparedStatement ps = conn.prepareStatement("SELECT id, firstName, middleName, lastName, homePhone, mobilePhone, workPhone, homeEmail, workEmail, height, weight, gender, race, date, time, addressId, occupationId FROM person"); //SQL statement to get all people from the database
+				ResultSet rs = ps.executeQuery(); //Retrieves all the people from the database
+				while(rs.next()) { //Loops through all people, creates an empty person and set all the values for each person to their corresponding value stored on the database
 					int col = 1;
 					Person person = new Person();
 					person.setId(rs.getInt(col++));
@@ -430,101 +332,39 @@ public class Person {
 					person.setRace(rs.getString(col++));
 					person.setDate(rs.getString(col++));
 					person.setTime(rs.getString(col++));
-					person.setNumber(rs.getInt(col++));
-					person.setStreet(rs.getString(col++));
-					person.setCity(rs.getString(col++));
-					person.setState(rs.getString(col++));
-					person.setZip(rs.getString(col++));
-					person.setCompanyName(rs.getString(col++));
-					person.setJobTitle(rs.getString(col++));
-					person.setEmploymentType(rs.getString(col++));
-					person.setMonthlySalary(rs.getString(col++));
-					person.setIndustry(rs.getString(col++));
 					person.setAddressId(rs.getInt(col++));
 					person.setOccupationId(rs.getInt(col++));
-					people.add(person);
-				} 
-				return people;
-			}
-			return null;
-
-		} catch (Exception e) {
-			return null;
-		} 
-	}
-
-	/**
-	 * Connects to the MySQL server and returns all the people that have a similarity between them based on user input
-	 * @param conn The MySQL connection
-	 * @param field The field that will be compared with when finding similarities
-	 * @param data The data that will need to be similar in order for the person to be considered similar
-	 * @return A list of people that are considered similar based on user input
-	 */
-	public static List<Person> getPerson(Connection conn, String field, String data) {
-		try {
-			if (conn.isValid(0)) { //Checks if the connection is valid
-				List<Person> similarPeople = new ArrayList<>(); //List where people with similarities, based on a field and data provided by the user, are added
-				PreparedStatement ps = null;
-				if(field.equalsIgnoreCase("date") || field.equalsIgnoreCase("time")) { //Checks if field is time or date to allow user to search for people created within a certain year, month etc.
-					ps = conn.prepareStatement("SELECT person.id, person.firstName, person.middleName, person.lastName, person.homePhone, person.mobilePhone, person.workPhone, person.homeEmail, person.workEmail, person.height, person.weight, person.gender, person.race, person.date, person.time, address.number, address.street, address.city, address.state, address.zip, occupation.companyName, occupation.jobTitle, occupation.employmentType, occupation.monthlySalary, occupation.industry, address.Id, occupation.Id FROM person inner join address on person.addressId=address.Id inner join occupation on person.occupationId=occupation.Id WHERE person." + field + "LIKE CONCAT(" + data + ")");
-				}else {
-					ps = conn.prepareStatement("SELECT person.id, person.firstName, person.middleName, person.lastName, person.homePhone, person.mobilePhone, person.workPhone, person.homeEmail, person.workEmail, person.height, person.weight, person.gender, person.race, person.date, person.time, address.number, address.street, address.city, address.state, address.zip, occupation.companyName, occupation.jobTitle, occupation.employmentType, occupation.monthlySalary, occupation.industry, address.Id, occupation.Id FROM person inner join address on person.addressId=address.Id inner join occupation on person.occupationId=occupation.Id WHERE person." + field + " = ?");
-					ps.setString(1, data);
+					people.add(person); //Adds the person to the people list
 				}
-				ResultSet rs = ps.executeQuery();
-				while (rs.next()) { //Loops through all the similar people in the database and creates a new person and adds all the required fields then adds the person to the similarPeople list
-					int col = 1;
-					Person person = new Person();
-					person.setId(rs.getInt(col++));
-					person.setFirstName(rs.getString(col++));
-					person.setMiddleName(rs.getString(col++));
-					person.setLastName(rs.getString(col++));
-					person.setHomePhone(rs.getString(col++));
-					person.setMobilePhone(rs.getString(col++));
-					person.setWorkPhone(rs.getString(col++));
-					person.setHomeEmail(rs.getString(col++));
-					person.setWorkEmail(rs.getString(col++));
-					person.setHeight(rs.getDouble(col++));
-					person.setWeight(rs.getDouble(col++));
-					person.setGender(rs.getString(col++));
-					person.setRace(rs.getString(col++));
-					person.setDate(rs.getString(col++));
-					person.setTime(rs.getString(col++));
-					person.setNumber(rs.getInt(col++));
-					person.setStreet(rs.getString(col++));
-					person.setCity(rs.getString(col++));
-					person.setState(rs.getString(col++));
-					person.setZip(rs.getString(col++));
-					person.setCompanyName(rs.getString(col++));
-					person.setJobTitle(rs.getString(col++));
-					person.setEmploymentType(rs.getString(col++));
-					person.setMonthlySalary(rs.getString(col++));
-					person.setIndustry(rs.getString(col++));
-					person.setAddressId(rs.getInt(col++));
-					person.setOccupationId(rs.getInt(col++));
-					similarPeople.add(person);
-				} 
-				return similarPeople;
-			} 
+				if(!people.isEmpty()) { //Checks if the people list is empty
+					return people; //Returns the all people list
+				}else { //No people in the database
+					return null;
+				}
+			}else { //MySQL connection is not valid
+				return null;
+			}
+		}catch (SQLException e) { //Error getting all people
+			e.printStackTrace();
 			return null;
-		} catch (Exception e) {
-			return null;
-		} 
+		}
 	}
 
 	/**
-	 * Connects to the MySQL server and returns a singular person based on the id the user inputed
+	 * Creates a list of similar people stored on a database and returns the similar people list
 	 * @param conn The MySQL connection
-	 * @param id The ID of the person that will be returned from the database
-	 * @return A singular person based on the user entered ID
+	 * @param field The field used to determine if a person is similar
+	 * @param data The value for the passed field to determine if a person is similar
+	 * @return Either returns a list of similar people or null if there was error getting similar people
 	 */
-	public static Person getPerson(Connection conn, int id) {
+	public List<Person> getSimilarPeople(Connection conn, String field, String data){
 		try {
-			if (conn.isValid(0)) { //Checks if the connection is valid
-				PreparedStatement ps = conn.prepareStatement("SELECT person.id, person.firstName, person.middleName, person.lastName, person.homePhone, person.mobilePhone, person.workPhone, person.homeEmail, person.workEmail, person.height, person.weight, person.gender, person.race, person.date, person.time, address.number, address.street, address.city, address.state, address.zip, occupation.companyName, occupation.jobTitle, occupation.employmentType, occupation.monthlySalary, occupation.industry, address.Id, occupation.Id FROM person inner join address on person.addressId=address.Id inner join occupation on person.occupationId=occupation.Id WHERE person.id = ?");
-				ps.setInt(1, id);
-				ResultSet rs = ps.executeQuery();
-				if (rs.next()) { //Checks if the MySQL prepared statement found any matching results and if so creates a new person and initializes that person and returns the person
+			if(conn.isValid(30)) { //Checks if the SQL connection is valid
+				List<Person> similarPeople = new ArrayList<Person>(); //Creates an empty list of people to store similar people on the database
+				PreparedStatement ps = conn.prepareStatement("SELECT id, firstName, middleName, lastName, homePhone, mobilePhone, workPhone, homeEmail, workEmail, height, weight, gender, race, date, time, addressId, occupationId FROM person WHERE " + field + "=?"); //SQL statement to get similar people from the database
+				ps.setString(1, data); //Sets the first ? to the string data passed into the function
+				ResultSet rs = ps.executeQuery(); //Retrieves all the similar people from the database
+				while(rs.next()) { //Loops through all the similar people, creates an empty person and set all the values for each person to their corresponding value stored on the databse
 					int col = 1;
 					Person person = new Person();
 					person.setId(rs.getInt(col++));
@@ -542,240 +382,355 @@ public class Person {
 					person.setRace(rs.getString(col++));
 					person.setDate(rs.getString(col++));
 					person.setTime(rs.getString(col++));
-					person.setNumber(rs.getInt(col++));
-					person.setStreet(rs.getString(col++));
-					person.setCity(rs.getString(col++));
-					person.setState(rs.getString(col++));
-					person.setZip(rs.getString(col++));
-					person.setCompanyName(rs.getString(col++));
-					person.setJobTitle(rs.getString(col++));
-					person.setEmploymentType(rs.getString(col++));
-					person.setMonthlySalary(rs.getString(col++));
-					person.setIndustry(rs.getString(col++));
+					person.setAddressId(rs.getInt(col++));
+					person.setOccupationId(rs.getInt(col++));
+					similarPeople.add(person); //Adds the person to the similar people list
+				}
+				if(!similarPeople.isEmpty()) { //Checks if the similar people list is empty
+					return similarPeople; //Returns the similar people list
+				}else { //No similar people based on passed field and data
+					return null;
+				}
+			}else { //MySQL connection is not valid
+				return null;
+			}
+		}catch (SQLException e) { //Error getting similar people
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * Creates a list of similar people stored on a database and returns the similar people list
+	 * @param conn The MySQL connection
+	 * @param field The field used to determine if a person is similar
+	 * @param data The value for the passed field to determine if a person is similar
+	 * @return Either returns a list of similar people or null if there was an error getting similar people
+	 */
+	public List<Person> getSimilarPeople(Connection conn, String field, int data){
+		try {
+			if(conn.isValid(30)) { //Checks if the SQL connection is valid
+				List<Person> similarPeople = new ArrayList<Person>(); //Creates an empty list of people to store similar people on the database
+				PreparedStatement ps = conn.prepareStatement("SELECT id, firstName, middleName, lastName, homePhone, mobilePhone, workPhone, homeEmail, workEmail, height, weight, gender, race, date, time, addressId, occupationId FROM person WHERE " + field + "=?"); //SQL statement to get similar people from the database
+				ps.setInt(1, data); //Sets the first ? to the integer data passed into the function
+				ResultSet rs = ps.executeQuery(); //Retrieves all the similar people from the database
+				while(rs.next()) { //Loops through all the similar people, creates an empty person and set all the values for each person to their corresponding value stored on the database
+					int col = 1;
+					Person person = new Person();
+					person.setId(rs.getInt(col++));
+					person.setFirstName(rs.getString(col++));
+					person.setMiddleName(rs.getString(col++));
+					person.setLastName(rs.getString(col++));
+					person.setHomePhone(rs.getString(col++));
+					person.setMobilePhone(rs.getString(col++));
+					person.setWorkPhone(rs.getString(col++));
+					person.setHomeEmail(rs.getString(col++));
+					person.setWorkEmail(rs.getString(col++));
+					person.setHeight(rs.getDouble(col++));
+					person.setWeight(rs.getDouble(col++));
+					person.setGender(rs.getString(col++));
+					person.setRace(rs.getString(col++));
+					person.setDate(rs.getString(col++));
+					person.setTime(rs.getString(col++));
+					person.setAddressId(rs.getInt(col++));
+					person.setOccupationId(rs.getInt(col++));
+					similarPeople.add(person); //Adds the person to the similar people list
+				}
+				if(!similarPeople.isEmpty()) { //Checks if the similar people list is empty
+					return similarPeople; //Returns the similar people list
+				}else { //No matching people based on passed field and data
+					return null;
+				}
+			}else { //MySQL connection is not valid
+				return null;
+			}
+		}catch (SQLException e) { //Error getting similar people
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * Creates a list of similar people stored on a database and returns the similar people list
+	 * @param conn The MySQL connection
+	 * @param field The field used to determine if a person is similar
+	 * @param data The value for the passed field to determine if a person is similar
+	 * @return Either returns a list of similar people or null if there was an error getting similar people
+	 */
+	public List<Person> getSimilarPeople(Connection conn, String field, double data){
+		try {
+			if(conn.isValid(30)) { //Checks if the SQL connection is valid
+				List<Person> similarPeople = new ArrayList<Person>(); //Creates an empty list of people to store similar people on the database
+				PreparedStatement ps = conn.prepareStatement("SELECT id, firstName, middleName, lastName, homePhone, mobilePhone, workPhone, homeEmail, workEmail, height, weight, gender, race, date, time, addressId, occupationId FROM person WHERE " + field + "=?"); //SQL statement to get similar people from the database
+				ps.setDouble(1, data); //Sets the first ? to the double data passed into the function
+				ResultSet rs = ps.executeQuery(); //Retrieves all the similar people from the database
+				while(rs.next()) { //Loops through all the similar people, creates an empty person and set all the values for each person to their corresponding value stored on the database
+					int col = 1;
+					Person person = new Person();
+					person.setId(rs.getInt(col++));
+					person.setFirstName(rs.getString(col++));
+					person.setMiddleName(rs.getString(col++));
+					person.setLastName(rs.getString(col++));
+					person.setHomePhone(rs.getString(col++));
+					person.setMobilePhone(rs.getString(col++));
+					person.setWorkPhone(rs.getString(col++));
+					person.setHomeEmail(rs.getString(col++));
+					person.setWorkEmail(rs.getString(col++));
+					person.setHeight(rs.getDouble(col++));
+					person.setWeight(rs.getDouble(col++));
+					person.setGender(rs.getString(col++));
+					person.setRace(rs.getString(col++));
+					person.setDate(rs.getString(col++));
+					person.setTime(rs.getString(col++));
+					person.setAddressId(rs.getInt(col++));
+					person.setOccupationId(rs.getInt(col++));
+					similarPeople.add(person); //Adds the person to the similar people list
+				}
+				if(!similarPeople.isEmpty()) { //Checks if the similar people list is empty
+					return similarPeople; //Returns the similar people list
+				}else { //No matching people based on passed field and data
+					return null;
+				}
+			}else { //MySQL connection is not valid
+				return null;
+			}
+		}catch (SQLException e) { //Error getting similar people
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	
+	/**
+	 * Retrieves a singular person based on the passed ID and returns it
+	 * @param conn The MySQL connection
+	 * @param id The ID of the person to be returned
+	 * @return Either the requested person from the database or null if there was an error getting the person
+	 */
+	public Person getSingularPerson(Connection conn, int id) {
+		try {
+			if(conn.isValid(30)) { //Checks if the SQL connection is valid
+				Person person = new Person(); //Creates an empty person to store the person on the database
+				PreparedStatement ps = conn.prepareStatement("SELECT id, firstName, middleName, lastName, homePhone, mobilePhone, workPhone, homeEmail, workEmail, height, weight, gender, race, date, time, addressId, occupationId FROM person WHERE id = ?"); //SQL statement to get a singular person based on the passed ID
+				ps.setInt(1, id); //Sets the first ? to the integer id of the person to be returned
+				ResultSet rs = ps.executeQuery(); //Retrieves the person from the database
+				if(rs.next()) { //Checks if the person was returned from the database. If true it will set all the values for the person to their corresponding values from the database. If false it will return null
+					int col = 1;
+					person.setId(rs.getInt(col++));
+					person.setFirstName(rs.getString(col++));
+					person.setMiddleName(rs.getString(col++));
+					person.setLastName(rs.getString(col++));
+					person.setHomePhone(rs.getString(col++));
+					person.setMobilePhone(rs.getString(col++));
+					person.setWorkPhone(rs.getString(col++));
+					person.setHomeEmail(rs.getString(col++));
+					person.setWorkEmail(rs.getString(col++));
+					person.setHeight(rs.getDouble(col++));
+					person.setWeight(rs.getDouble(col++));
+					person.setGender(rs.getString(col++));
+					person.setRace(rs.getString(col++));
+					person.setDate(rs.getString(col++));
+					person.setTime(rs.getString(col++));
 					person.setAddressId(rs.getInt(col++));
 					person.setOccupationId(rs.getInt(col++));
 					return person;
-				} 
-			} 
-			return null;
-		} catch (Exception e) {
-			return null;
-		} 
-	}
-
-	/**
-	 * Connects to the MySQL server and updates a person with a user inputed id and checks to make sure that the new person doesn't already exist in the database. If successful at updating the person the new person will be returned
-	 * @param conn The MySQL connection
-	 * @param id The ID of the person to update
-	 * @param firstName The new first name of the person to be updated blank if keeping the old first name
-	 * @param middleName The new middle name of the person to be updated blank if keeping the old middle name
-	 * @param lastName The new last name of the person to be updated blank if keeping the old last name
-	 * @param homePhone The new home phone of the person to be updated blank if keeping the old home phone
-	 * @param mobilePhone The new mobile phone name of the person to be updated blank if keeping the old mobile phone
-	 * @param workPhone The new work phone of the person to be updated blank if keeping the old work phone
-	 * @param homeEmail The new home email of the person to be updated blank if keeping the old home email
-	 * @param workEmail The new work email of the person to be updated blank if keeping the old work email
-	 * @param height The new height of the person to be updated blank if keeping the old height
-	 * @param weight The new weight of the person to be updated blank if keeping the old weight
-	 * @param gender The new gender of the person to be updated blank if keeping the old gender
-	 * @param race The new race of the person to be updated blank if keeping the old race
-	 * @param addressId The new address ID of the person to be updated blank if keeping the old address ID
-	 * @param occupationId The new occupation ID of the person to be updated blank if keeping the old occupation ID
-	 * @return The updated person if successful if not null is returned
-	 */
-	public static Person updatePerson(Connection conn, int id, String firstName, String middleName, String lastName, String homePhone, String mobilePhone, String workPhone, String homeEmail, String workEmail, double height, double weight, String gender, String race, int addressId, int occupationId) {
-		try {
-			if (conn.isValid(0)) { //Checks if the connection is valid
-				Person person = getPerson(conn, id); //Gets the current person that is being updated
-				Person newPerson = new Person(firstName, middleName, lastName, homePhone, mobilePhone, workPhone, homeEmail, workEmail, height, weight, gender, race, addressId, occupationId); //Creates a new person that is overriding the old person
-				Address address = Address.getAddress(conn, addressId); //Creates new address object with address ID
-				Occupation occupation = Occupation.getOccupation(conn, occupationId); //Creates new occupation object with occupation ID
-				Date date = Date.valueOf(LocalDate.now());
-				Time time = Time.valueOf(LocalTime.now());
-				//Sets ID, address fields and occupations fields to the new person
-				newPerson.setId(person.getId());
-				newPerson.setNumber(address.getNumber());
-				newPerson.setStreet(address.getStreet());
-				newPerson.setCity(address.getCity());
-				newPerson.setState(address.getState());
-				newPerson.setZip(address.getZip());
-				newPerson.setCompanyName(occupation.getCompanyName());
-				newPerson.setJobTitle(occupation.getJobTitle());
-				newPerson.setEmploymentType(occupation.getEmploymentType());
-				newPerson.setMonthlySalary(occupation.getMonthlySalary());
-				newPerson.setIndustry(occupation.getIndustry());
-				newPerson.setDate(date.toString());
-				newPerson.setTime(time.toString());
-				//Checks if any fields are blank and changes them to the old persons data
-				if(firstName.equals("")) {
-					newPerson.setFirstName(person.getFirstName());
+				}else { //No person with passed id
+					return null;
 				}
-				if(middleName.equals("")) {
-					newPerson.setMiddleName(person.getMiddleName());
-				}
-				if(lastName.equals("")) {
-					newPerson.setLastName(person.getLastName());
-				}
-				if(homePhone.equals("")) {
-					newPerson.setHomePhone(person.getHomePhone());
-				}
-				if(mobilePhone.equals("")) {
-					newPerson.setMobilePhone(person.getMobilePhone());
-				}
-				if(workPhone.equals("")) {
-					newPerson.setWorkPhone(person.getWorkPhone());
-				}
-				if(homeEmail.equals("")) {
-					newPerson.setHomeEmail(person.getHomeEmail());
-				}
-				if(workEmail.equals("")) {
-					newPerson.setWorkEmail(person.getWorkEmail());
-				}
-				if(height==0.0) {
-					newPerson.setHeight(person.getHeight());
-				}
-				if(weight==0.0) {
-					newPerson.setWeight(person.getWeight());
-				}
-				if(gender.equals("")) {
-					newPerson.setGender(person.getGender());
-				}
-				if(race.equals("")) {
-					newPerson.setRace(person.getRace());
-				}
-				if(addressId==0) {
-					newPerson.setAddressId(person.getAddressId());
-				}
-				if(occupationId==0) {
-					newPerson.setOccupationId(person.getOccupationId());
-				}
-				if (!Helper.exists(newPerson, conn)) { //Checks if the new person exists on the database and if not updates the person on the database
-					PreparedStatement ps = conn.prepareStatement("UPDATE person SET firstName=?, middleName=?, lastName=?, homePhone=?, mobilePhone=?, workPhone=?, homeEmail=?, workEmail=?, height=?, weight=?, gender=?, race=?, addressId=?, occupationId=?, date=?, time=? WHERE id =?");
-					ps.setString(1, newPerson.getFirstName());
-					ps.setString(2, newPerson.getMiddleName());
-					ps.setString(3, newPerson.getLastName());
-					ps.setString(4, newPerson.getHomePhone());
-					ps.setString(5, newPerson.getMobilePhone());
-					ps.setString(6, newPerson.getWorkPhone());
-					ps.setString(7, newPerson.getHomeEmail());
-					ps.setString(8, newPerson.getWorkEmail());
-					ps.setDouble(9, newPerson.getHeight());
-					ps.setDouble(10, newPerson.getWeight());
-					ps.setString(11, newPerson.getGender());
-					ps.setString(12, newPerson.getRace());
-					ps.setInt(13, newPerson.getAddressId());
-					ps.setInt(14, newPerson.getOccupationId());
-					ps.setDate(15, date);
-					ps.setTime(16, time);
-					ps.setInt(17, id);
-					ps.executeUpdate();
-					if(getPerson(conn, id).equals(newPerson)) { //Checks that the person got updated
-						return newPerson;
-					}
-				} 
+			}else { //MySQL connection is not valid
 				return null;
 			}
+		}catch (SQLException e) { //Error getting singular person
+			e.printStackTrace();
 			return null;
-		} catch (Exception e) {
-			return null;
-		} 
+		}
 	}
 
 	/**
-	 * Connects to the MySQL server and creates a new person with a user inputed id and checks to make sure that the new person doesn't already exist in the database. If successful at creating the person the new person will be returned
+	 * Updates a singular person on the database and returns the new person
+	 * To keep existing data from the current person set height and weight to 0.0, set addressId and occupationId to 0
+	 * or other fields to empty strings, excluding id, date, and time
 	 * @param conn The MySQL connection
-	 * @param firstName The new first name of the person to be created
-	 * @param middleName The new middle name of the person to be created
-	 * @param lastName The new last name of the person to be created
-	 * @param homePhone The new home phone of the person to be created
-	 * @param mobilePhone The new mobile phone name of the person to be created 
-	 * @param workPhone The new work phone of the person to be created
-	 * @param homeEmail The new home email of the person to be created
-	 * @param workEmail The new work email of the person to be created
-	 * @param height The new height of the person to be created
-	 * @param weight The new weight of the person to be created
-	 * @param gender The new gender of the person to be created
-	 * @param race The new race of the person to be created
-	 * @param addressId The new address ID of the person to be created
-	 * @param occupationId The new occupation ID of the person to be  created
-	 * @return The new person if successful if not null is returned
+	 * @param id The id of the person to be updated
+	 * @param updatedPerson The new person that is going to be updated
+	 * @return Either returns the person passed, confirming the update or null if the person was not updated
 	 */
-	public static Person insertPerson(Connection conn, String firstName, String middleName, String lastName, String homePhone, String mobilePhone, String workPhone, String homeEmail, String workEmail, double height, double weight, String gender, String race, int addressId, int occupationId) {
+	public Person updatePerson(Connection conn, int id, Person updatedPerson) {
 		try {
-			if (conn.isValid(0)) { //Checks if the connection is valid
-				Person person = new Person(firstName, middleName, lastName, homePhone, mobilePhone, workPhone, homeEmail, workEmail, height, weight, gender, race, addressId, occupationId); //Creates a new person that will be added to the database
-				Address address = Address.getAddress(conn, addressId); //Creates new address object with address ID
-				Occupation occupation = Occupation.getOccupation(conn, occupationId); //Creates new occupation object with occupation ID
-				Date date = Date.valueOf(LocalDate.now());
-				Time time = Time.valueOf(LocalTime.now());
-				//Sets ID, address fields and occupations fields to the new person
-				person.setDate(date.toString());
-				person.setTime(time.toString());
-				person.setCompanyName(occupation.getCompanyName());
-				person.setJobTitle(occupation.getJobTitle());
-				person.setEmploymentType(occupation.getEmploymentType());
-				person.setMonthlySalary(occupation.getMonthlySalary());
-				person.setIndustry(occupation.getIndustry());
-				person.setNumber(address.getNumber());
-				person.setStreet(address.getStreet());
-				person.setCity(address.getCity());
-				person.setState(address.getState());
-				person.setZip(address.getZip());
-				if (!Helper.exists(person, conn)) { //Checks if the new person exists on the database and if not adds the person to the database
-					PreparedStatement ps = conn.prepareStatement("INSERT INTO person (firstName, middleName, lastName, homePhone, mobilePhone, workPhone, homeEmail, workEmail, height, weight, gender, race, addressId, occupationId, date, time) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-					ps.setString(1, firstName);
-					ps.setString(2, middleName);
-					ps.setString(3, lastName);
-					ps.setString(4, homePhone);
-					ps.setString(5, mobilePhone);
-					ps.setString(6, workPhone);
-					ps.setString(7, homeEmail);
-					ps.setString(8, workEmail);
-					ps.setDouble(9, height);
-					ps.setDouble(10, weight);
-					ps.setString(11, gender);
-					ps.setString(12, race);
-					ps.setInt(13, addressId);
-					ps.setInt(14, occupationId);
-					ps.setDate(15, date);
-					ps.setTime(16, time);
-					ps.execute();
-					person.setId(Helper.mostRecent(conn, "person"));
-					if(getPerson(conn, person.getId()).equals(person)) { //Checks that the new person got added
-						return person;
+			if(conn.isValid(30)) { //Checks if the MySQL connection is valid
+				BackendHelper helper = new BackendHelper(); //Creates a backend helper to help check for existing people in the database
+				updatedPerson.setId(id); //Sets the id of the person
+				updatedPerson.setDate(Date.valueOf(LocalDate.now()).toString()); //Sets the current date to the person
+				updatedPerson.setTime(Time.valueOf(LocalTime.now()).toString()); //Sets the current time to the person
+				Person oldPerson = getSingularPerson(conn, id); //Creates a person object and sets it to the current person stored on the database at the given id
+				//Checks if any field in the updated person is empty and replaces it with data from the current person on the database
+				if(updatedPerson.getFirstName().equalsIgnoreCase("")) {
+					updatedPerson.setFirstName(oldPerson.getFirstName());
+				}
+				if(updatedPerson.getMiddleName().equalsIgnoreCase("")) {
+					updatedPerson.setMiddleName(oldPerson.getMiddleName());
+				}
+				if(updatedPerson.getLastName().equalsIgnoreCase("")) {
+					updatedPerson.setLastName(oldPerson.getLastName());
+				}
+				if(updatedPerson.getHomePhone()=="") {
+					updatedPerson.setHomePhone(oldPerson.getHomePhone());
+				}
+				if(updatedPerson.getMobilePhone()=="") {
+					updatedPerson.setMobilePhone(oldPerson.getMobilePhone());
+				}
+				if(updatedPerson.getWorkPhone()=="") {
+					updatedPerson.setWorkPhone(oldPerson.getWorkPhone());
+				}
+				if(updatedPerson.getHomeEmail().equalsIgnoreCase("")) {
+					updatedPerson.setHomeEmail(oldPerson.getHomeEmail());
+				}
+				if(updatedPerson.getWorkEmail().equalsIgnoreCase("")) {
+					updatedPerson.setWorkEmail(oldPerson.getWorkEmail());
+				}
+				if(updatedPerson.getHeight()==0.0) {
+					updatedPerson.setHeight(oldPerson.getHeight());
+				}
+				if(updatedPerson.getWeight()==0.0) {
+					updatedPerson.setWeight(oldPerson.getWeight());
+				}
+				if(updatedPerson.getGender().equalsIgnoreCase("")) {
+					updatedPerson.setGender(oldPerson.getGender());
+				}
+				if(updatedPerson.getRace().equalsIgnoreCase("")) {
+					updatedPerson.setRace(oldPerson.getRace());
+				}
+				if(updatedPerson.getAddressId()==0) {
+					updatedPerson.setAddressId(oldPerson.getAddressId());
+				}
+				if(updatedPerson.getOccupationId()==0) {
+					updatedPerson.setOccupationId(oldPerson.getOccupationId());
+				}
+				if(!helper.exisits(conn, updatedPerson)) { //Makes sure the updated person doesn't exist on the database
+					PreparedStatement ps = conn.prepareStatement("UPDATE person SET firstName=?, middleName=?, lastName=?, homePhone=?, mobilePhone=?, workPhone=?, homeEmail=?, workEmail=?, height=?, weight=?, gender=?, race=?, addressId=?, occupationId=?, date=?, time=? WHERE id =?"); //SQL statement that updates existing data with the new data at the given id
+					//Sets all the ? to the given data from the updated person object
+					ps.setString(1, updatedPerson.getFirstName());
+					ps.setString(2, updatedPerson.getMiddleName());
+					ps.setString(3, updatedPerson.getLastName());
+					ps.setString(4, updatedPerson.getHomePhone());
+					ps.setString(5, updatedPerson.getMobilePhone());
+					ps.setString(6, updatedPerson.getWorkPhone());
+					ps.setString(7, updatedPerson.getHomeEmail());
+					ps.setString(8, updatedPerson.getWorkEmail());
+					ps.setDouble(9, updatedPerson.getHeight());
+					ps.setDouble(10, updatedPerson.getWeight());
+					ps.setString(11, updatedPerson.getGender());
+					ps.setString(12, updatedPerson.getRace());
+					ps.setInt(13, updatedPerson.getAddressId());
+					ps.setInt(14, updatedPerson.getOccupationId());
+					ps.setString(15, updatedPerson.getDate());
+					ps.setString(16, updatedPerson.getTime());
+					ps.setInt(17, id);
+					ps.executeUpdate(); //Sends the update request to the database
+					if(getSingularPerson(conn, id).equals(updatedPerson)) { //Makes sure the requested person was successfully updated
+						return updatedPerson;
+					}else { //Person not updated
+						return null;
 					}
-
-				} 
+				}else { //Person already exists on the database
+					return null;
+				}
+			}else { //MySQL connection is not valid
 				return null;
-			} 
+			}
+		}catch(SQLException e) { //Error updating person
+			e.printStackTrace();
 			return null;
-		} catch (Exception e) {
-			return null;
-		} 
+		}
 	}
 
 	/**
-	 * Connects to the MySQL server and removes a selected person with user inputed fields and data
+	 * Inserts a new person into the database
 	 * @param conn The MySQL connection
-	 * @param field The field that will be used when removing the person
-	 * @param data The data that will need to be used when finding the person to remove
-	 * @return True if the person was removed from the databases otherwise false
+	 * @param newPerson The new person this is going to be inserted into the database
+	 * @return Either returns the passed person, confirming the insert or null if the person wasn't updated
 	 */
-	public static boolean removePerson(Connection conn, String field, String data) {
+	public Person insertPerson(Connection conn, Person newPerson) {
 		try {
-			if (conn.isValid(0)) { //Checks if the connection is valid
-				PreparedStatement ps = conn.prepareStatement("DELETE FROM person WHERE " + field + " = ?");
-				ps.setString(1, data);
-				ps.executeUpdate();
-				if (getPerson(conn, field, data).isEmpty()) { //Checks to make sure the person was removed
-					return true; 
-				}else {
+			if(conn.isValid(30)) { //Checks if the MySQL connection is valid!
+				if(!newPerson.getFirstName().equals("") && !newPerson.getMiddleName().equals("") && !newPerson.getLastName().equals("") && !newPerson.getHomePhone().equals("0") && !newPerson.getMobilePhone().equals("0") && !newPerson.getWorkPhone().equals("0") && !newPerson.getHomeEmail().equals("") && !newPerson.getWorkEmail().equals("") && newPerson.getHeight() != 0.0 && newPerson.getWeight() != 0.0 && !newPerson.getGender().equals("") && !newPerson.getRace().equals("") && newPerson.getAddressId() != 0 && newPerson.getOccupationId() != 0) { //Makes sure all the values of the new person aren't empty or 0
+					newPerson.setDate(Date.valueOf(LocalDate.now()).toString()); //Sets the current date to the new person
+					newPerson.setTime(Time.valueOf(LocalTime.now()).toString()); //Sets the current time to the new person
+					BackendHelper helper = new BackendHelper(); //Creates a backend helper to check for exists person in the database and to get the new id of the person
+					if(!helper.exisits(conn, newPerson)) { //Determines if the newPerson is not in the database
+						PreparedStatement ps = conn.prepareStatement("INSERT INTO person (firstName, middleName, lastName, homePhone, mobilePhone, workPhone, homeEmail, workEmail, height, weight, gender, race, addressId, occupationId, date, time) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"); //SQL statement to insert a new person in the database
+						//Sets all the ? to the given data from the new person object
+						ps.setString(1, newPerson.getFirstName());
+						ps.setString(2, newPerson.getMiddleName());
+						ps.setString(3, newPerson.getLastName());
+						ps.setString(4, newPerson.getHomePhone());
+						ps.setString(5, newPerson.getMobilePhone());
+						ps.setString(6, newPerson.getWorkPhone());
+						ps.setString(7, newPerson.getHomeEmail());
+						ps.setString(8, newPerson.getWorkEmail());
+						ps.setDouble(9, newPerson.getHeight());
+						ps.setDouble(10, newPerson.getWeight());
+						ps.setString(11, newPerson.getGender());
+						ps.setString(12, newPerson.getRace());
+						ps.setInt(13, newPerson.getAddressId());
+						ps.setInt(14, newPerson.getOccupationId());
+						ps.setString(15, newPerson.getDate());
+						ps.setString(16, newPerson.getTime());
+						ps.execute(); //Sends the insert request to the database
+						int id = helper.mostRecentPerson(conn); //Gets the most recent id from the person table
+						if(id!=-1) { //Checks to make sure the id is valid
+							newPerson.setId(id); //Sets the id of the new person
+							if(getSingularPerson(conn, id).equals(newPerson)) { //Makes sure the requested person was successfully inserted
+								return newPerson;
+							}else { //New person not inserted
+								return null;
+							}
+						}else { //Error getting new person from database
+							return null;
+						}
+					}else { //Person already exists on the database
+						return null;
+					}
+				}else { //One or more of the person fields are blank or 0
+					return null;
+				}
+			}else { //MySQL connection is not valid
+				return null;
+			}
+		}catch(SQLException e) { //Error inserting new person
+			e.printStackTrace();
+			return null;
+		}
+	}
+
+	/**
+	 * Removes the person at the passed id from the database
+	 * @param conn The MySQL connection
+	 * @param id The ID of the person to be removed
+	 * @return Either true if the person was removed or false if it wasn't
+	 */
+	public boolean removePerson(Connection conn, int id) {
+		try {
+			if(conn.isValid(30)) { //Checks if the MySQL connection is valid
+				Person person = getSingularPerson(conn, id); //Gets the current person from the database
+				if(person!=null) { //Checks if the person is on the database
+					PreparedStatement ps = conn.prepareStatement("DELETE FROM person WHERE id = ?"); //SQL statement to remove a given person
+					ps.setInt(1, id); //Sets the first ? to the id of the person to remove
+					ps.execute(); //Sends the delete request to the database
+					if(getSingularPerson(conn, id) == null) { //Checks that the person was removed from the database
+						return true;
+					}else { //Person not removed
+						return false;
+					}
+				}else { //Person not in database
 					return false;
 				}
+			}else { //MySQL connection is not valid
+				return false;
 			}
+		}catch (SQLException e) { //Error removing person
+			e.printStackTrace();
 			return false;
-		} catch (Exception e) {
-			return false;
-		} 
+		}
 	}
 }
