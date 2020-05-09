@@ -1,9 +1,20 @@
 # AddressBook
-## Version 2.5 Release Tomorrow!!!!
-I have tested the new backend of AddressBook and plan on releasing it early tomorrow! I want to make some changes to the grammar in the javadoc! I also plan on updating this README with how to use the program etc.
+## Version 2.5 Released!
+I have just released version 2.5! This program has many improvemnts over the last version, 2.1! Change Log:
+1. Complete re-write to improve stability and fix bugs!
+2. More checks to make sure the data passed to the backend is in a good format
+3. Helper class to allow for independent updates to the backend
+4. Full split from AddressBookCLI allowing for easier use and smaller program files
 
-## Version 2.5 On the Way!!!!
-  I have just finished re-writing the backend of the AddressBook program for the most part. There are still a few quality of life improvements I would like to add plus I need to test the program. This update is going to be mostly a quality of life and overall improvement update! The major function will now only take the given object ex. Person object instead of all the values individual values. Also the program will perform more checks on given data and returned data to lessen the likely hood of bugs popping up! I am hoping to release it within the next few days! 
- 
- ## Important!!
- This re-write WILL break current projects that run on the older 2.1 version!
+## Why the Split?
+The spilt of the backend and the frontend is to help allow me and anyone who wants to use this easier access to the core functions of the program! Also updates should be more reqular, when needed, to the backend since I don't have to work on the frontend and REST interface at the same time!
+
+## What do I need to know?
+### How can I include this program in my java project.
+If you want to use this then the easiest way is to download the jar file either in the code section or from the releases tab. Both will be updated at the same time. Once downloaded all you need to do is include the jar in your build path and import it as needed!
+
+### Is there a java doc available?
+Yes! If you visit https://jnstockley.github.io/AddressBook/ the javadoc will be available there
+
+### I found a bug or have a feature request what should I do?
+If you found a bug you can submit the bug under the issues tab using the bug lable. If you have a feature request you can submit it under the issues tab using the enhancement lable.
