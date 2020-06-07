@@ -15,7 +15,7 @@ import java.util.List;
  * This class holds all the necessary commands to create an occupation object,
  * and to perform full CRUD on the occupation table of a given database.
  * @author jnstockley
- * @version 2.5
+ * @version 2.6
  */
 public class Occupation {
 
@@ -190,11 +190,11 @@ public class Occupation {
 					int col = 1;
 					Occupation occupation = new Occupation();
 					occupation.setId(rs.getInt(col++));
-					occupation.setCompanyName(rs.getString(col++));
-					occupation.setJobTitle(rs.getString(col++));
-					occupation.setEmploymentType(rs.getString(col++));
-					occupation.setMonthlySalary(rs.getString(col++));
-					occupation.setIndustry(rs.getString(col++));
+					occupation.setCompanyName(Encryption.decrypt(rs.getString(col++)));
+					occupation.setJobTitle(Encryption.decrypt(rs.getString(col++)));
+					occupation.setEmploymentType(Encryption.decrypt(rs.getString(col++)));
+					occupation.setMonthlySalary(Encryption.decrypt(rs.getString(col++)));
+					occupation.setIndustry(Encryption.decrypt(rs.getString(col++)));
 					occupation.setDate(rs.getString(col++));
 					occupation.setTime(rs.getString(col++));
 					occupations.add(occupation); //Adds the occupation to the occupations list
@@ -231,11 +231,11 @@ public class Occupation {
 					int col = 1;
 					Occupation occupation = new Occupation();
 					occupation.setId(rs.getInt(col++));
-					occupation.setCompanyName(rs.getString(col++));
-					occupation.setJobTitle(rs.getString(col++));
-					occupation.setEmploymentType(rs.getString(col++));
-					occupation.setMonthlySalary(rs.getString(col++));
-					occupation.setIndustry(rs.getString(col++));
+					occupation.setCompanyName(Encryption.decrypt(rs.getString(col++)));
+					occupation.setJobTitle(Encryption.decrypt(rs.getString(col++)));
+					occupation.setEmploymentType(Encryption.decrypt(rs.getString(col++)));
+					occupation.setMonthlySalary(Encryption.decrypt(rs.getString(col++)));
+					occupation.setIndustry(Encryption.decrypt(rs.getString(col++)));
 					occupation.setDate(rs.getString(col++));
 					occupation.setTime(rs.getString(col++));
 					similarOccupations.add(occupation); //Adds the occupation to the similar occupations list
@@ -272,11 +272,11 @@ public class Occupation {
 					int col = 1;
 					Occupation occupation = new Occupation();
 					occupation.setId(rs.getInt(col++));
-					occupation.setCompanyName(rs.getString(col++));
-					occupation.setJobTitle(rs.getString(col++));
-					occupation.setEmploymentType(rs.getString(col++));
-					occupation.setMonthlySalary(rs.getString(col++));
-					occupation.setIndustry(rs.getString(col++));
+					occupation.setCompanyName(Encryption.decrypt(rs.getString(col++)));
+					occupation.setJobTitle(Encryption.decrypt(rs.getString(col++)));
+					occupation.setEmploymentType(Encryption.decrypt(rs.getString(col++)));
+					occupation.setMonthlySalary(Encryption.decrypt(rs.getString(col++)));
+					occupation.setIndustry(Encryption.decrypt(rs.getString(col++)));
 					occupation.setDate(rs.getString(col++));
 					occupation.setTime(rs.getString(col++));
 					similarOccupations.add(occupation); //Adds the occupation to the similar occupations list
@@ -311,11 +311,11 @@ public class Occupation {
 				if(rs.next()) { //Checks if the occupation was returned from the database. If true it will set all the values for the occupation to their corresponding values from the database. If false will return null
 					int col = 1;
 					occupation.setId(rs.getInt(col++));
-					occupation.setCompanyName(rs.getString(col++));
-					occupation.setJobTitle(rs.getString(col++));
-					occupation.setEmploymentType(rs.getString(col++));
-					occupation.setMonthlySalary(rs.getString(col++));
-					occupation.setIndustry(rs.getString(col++));
+					occupation.setCompanyName(Encryption.decrypt(rs.getString(col++)));
+					occupation.setJobTitle(Encryption.decrypt(rs.getString(col++)));
+					occupation.setEmploymentType(Encryption.decrypt(rs.getString(col++)));
+					occupation.setMonthlySalary(Encryption.decrypt(rs.getString(col++)));
+					occupation.setIndustry(Encryption.decrypt(rs.getString(col++)));
 					occupation.setDate(rs.getString(col++));
 					occupation.setTime(rs.getString(col++));
 					return occupation;
@@ -364,11 +364,11 @@ public class Occupation {
 				if(!helper.exisits(conn, updatedOccupation)) { //Makes sure the updated occupation doesn't exist on the database
 					PreparedStatement ps = conn.prepareStatement("UPDATE occupation SET companyName=?, jobTitle=?, employmentType=?, monthlySalary=?, industry=?, date=?, time=? WHERE id =?"); //SQL statement that updates existing data with the new data at the given id
 					//Sets all the ? to the given data from the updated occupation object
-					ps.setString(1, updatedOccupation.getCompanyName());
-					ps.setString(2, updatedOccupation.getJobTitle());
-					ps.setString(3, updatedOccupation.getEmploymentType());
-					ps.setString(4, updatedOccupation.getMonthlySalary());
-					ps.setString(5, updatedOccupation.getIndustry());
+					ps.setString(1, Encryption.encrypt(updatedOccupation.getCompanyName()));
+					ps.setString(2, Encryption.encrypt(updatedOccupation.getJobTitle()));
+					ps.setString(3, Encryption.encrypt(updatedOccupation.getEmploymentType()));
+					ps.setString(4, Encryption.encrypt(updatedOccupation.getMonthlySalary()));
+					ps.setString(5, Encryption.encrypt(updatedOccupation.getIndustry()));
 					ps.setString(6, updatedOccupation.getDate());
 					ps.setString(7, updatedOccupation.getTime());
 					ps.setInt(8, id);
@@ -406,11 +406,11 @@ public class Occupation {
 					if(!helper.exisits(conn, newOccupation)) { //Makes sure the new occupation doesn't exist on the database
 						PreparedStatement ps = conn.prepareStatement("INSERT INTO occupation (companyName, jobTitle, employmentType, monthlySalary, industry, date, time) values (?,?,?,?,?,?,?)"); //SQL statement to insert a new occupation in the database
 						//Sets all the ? to the given data from the new occupation object
-						ps.setString(1, newOccupation.getCompanyName());
-						ps.setString(2, newOccupation.getJobTitle());
-						ps.setString(3, newOccupation.getEmploymentType());
-						ps.setString(4, newOccupation.getMonthlySalary());
-						ps.setString(5, newOccupation.getIndustry());
+						ps.setString(1, Encryption.encrypt(newOccupation.getCompanyName()));
+						ps.setString(2, Encryption.encrypt(newOccupation.getJobTitle()));
+						ps.setString(3, Encryption.encrypt(newOccupation.getEmploymentType()));
+						ps.setString(4, Encryption.encrypt(newOccupation.getMonthlySalary()));
+						ps.setString(5, Encryption.encrypt(newOccupation.getIndustry()));
 						ps.setString(6, newOccupation.getDate());
 						ps.setString(7, newOccupation.getTime());
 						ps.execute(); //Sends the insert request to the database

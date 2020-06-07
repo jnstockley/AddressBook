@@ -15,7 +15,7 @@ import java.util.List;
  * This class holds all the necessary commands to create a person object,
  * and to perform full CRUD on the person table of a given database.
  * @author jnstockley
- * @version 2.5
+ * @version 2.6
  */
 public class Person {
 
@@ -318,18 +318,18 @@ public class Person {
 					int col = 1;
 					Person person = new Person();
 					person.setId(rs.getInt(col++));
-					person.setFirstName(rs.getString(col++));
-					person.setMiddleName(rs.getString(col++));
-					person.setLastName(rs.getString(col++));
-					person.setHomePhone(rs.getString(col++));
-					person.setMobilePhone(rs.getString(col++));
-					person.setWorkPhone(rs.getString(col++));
-					person.setHomeEmail(rs.getString(col++));
-					person.setWorkEmail(rs.getString(col++));
-					person.setHeight(rs.getDouble(col++));
-					person.setWeight(rs.getDouble(col++));
-					person.setGender(rs.getString(col++));
-					person.setRace(rs.getString(col++));
+					person.setFirstName(Encryption.decrypt(rs.getString(col++)));
+					person.setMiddleName(Encryption.decrypt(rs.getString(col++)));
+					person.setLastName(Encryption.decrypt(rs.getString(col++)));
+					person.setHomePhone(Encryption.decrypt(rs.getString(col++)));
+					person.setMobilePhone(Encryption.decrypt(rs.getString(col++)));
+					person.setWorkPhone(Encryption.decrypt(rs.getString(col++)));
+					person.setHomeEmail(Encryption.decrypt(rs.getString(col++)));
+					person.setWorkEmail(Encryption.decrypt(rs.getString(col++)));
+					person.setHeight(Double.parseDouble(Encryption.decrypt(rs.getString(col++))));
+					person.setWeight(Double.parseDouble(Encryption.decrypt(rs.getString(col++))));
+					person.setGender(Encryption.decrypt(rs.getString(col++)));
+					person.setRace(Encryption.decrypt(rs.getString(col++)));
 					person.setDate(rs.getString(col++));
 					person.setTime(rs.getString(col++));
 					person.setAddressId(rs.getInt(col++));
@@ -368,18 +368,18 @@ public class Person {
 					int col = 1;
 					Person person = new Person();
 					person.setId(rs.getInt(col++));
-					person.setFirstName(rs.getString(col++));
-					person.setMiddleName(rs.getString(col++));
-					person.setLastName(rs.getString(col++));
-					person.setHomePhone(rs.getString(col++));
-					person.setMobilePhone(rs.getString(col++));
-					person.setWorkPhone(rs.getString(col++));
-					person.setHomeEmail(rs.getString(col++));
-					person.setWorkEmail(rs.getString(col++));
-					person.setHeight(rs.getDouble(col++));
-					person.setWeight(rs.getDouble(col++));
-					person.setGender(rs.getString(col++));
-					person.setRace(rs.getString(col++));
+					person.setFirstName(Encryption.decrypt(rs.getString(col++)));
+					person.setMiddleName(Encryption.decrypt(rs.getString(col++)));
+					person.setLastName(Encryption.decrypt(rs.getString(col++)));
+					person.setHomePhone(Encryption.decrypt(rs.getString(col++)));
+					person.setMobilePhone(Encryption.decrypt(rs.getString(col++)));
+					person.setWorkPhone(Encryption.decrypt(rs.getString(col++)));
+					person.setHomeEmail(Encryption.decrypt(rs.getString(col++)));
+					person.setWorkEmail(Encryption.decrypt(rs.getString(col++)));
+					person.setHeight(Double.parseDouble(Encryption.decrypt(rs.getString(col++))));
+					person.setWeight(Double.parseDouble(Encryption.decrypt(rs.getString(col++))));
+					person.setGender(Encryption.decrypt(rs.getString(col++)));
+					person.setRace(Encryption.decrypt(rs.getString(col++)));
 					person.setDate(rs.getString(col++));
 					person.setTime(rs.getString(col++));
 					person.setAddressId(rs.getInt(col++));
@@ -418,18 +418,18 @@ public class Person {
 					int col = 1;
 					Person person = new Person();
 					person.setId(rs.getInt(col++));
-					person.setFirstName(rs.getString(col++));
-					person.setMiddleName(rs.getString(col++));
-					person.setLastName(rs.getString(col++));
-					person.setHomePhone(rs.getString(col++));
-					person.setMobilePhone(rs.getString(col++));
-					person.setWorkPhone(rs.getString(col++));
-					person.setHomeEmail(rs.getString(col++));
-					person.setWorkEmail(rs.getString(col++));
-					person.setHeight(rs.getDouble(col++));
-					person.setWeight(rs.getDouble(col++));
-					person.setGender(rs.getString(col++));
-					person.setRace(rs.getString(col++));
+					person.setFirstName(Encryption.decrypt(rs.getString(col++)));
+					person.setMiddleName(Encryption.decrypt(rs.getString(col++)));
+					person.setLastName(Encryption.decrypt(rs.getString(col++)));
+					person.setHomePhone(Encryption.decrypt(rs.getString(col++)));
+					person.setMobilePhone(Encryption.decrypt(rs.getString(col++)));
+					person.setWorkPhone(Encryption.decrypt(rs.getString(col++)));
+					person.setHomeEmail(Encryption.decrypt(rs.getString(col++)));
+					person.setWorkEmail(Encryption.decrypt(rs.getString(col++)));
+					person.setHeight(Double.parseDouble(Encryption.decrypt(rs.getString(col++))));
+					person.setWeight(Double.parseDouble(Encryption.decrypt(rs.getString(col++))));
+					person.setGender(Encryption.decrypt(rs.getString(col++)));
+					person.setRace(Encryption.decrypt(rs.getString(col++)));
 					person.setDate(rs.getString(col++));
 					person.setTime(rs.getString(col++));
 					person.setAddressId(rs.getInt(col++));
@@ -468,18 +468,18 @@ public class Person {
 					int col = 1;
 					Person person = new Person();
 					person.setId(rs.getInt(col++));
-					person.setFirstName(rs.getString(col++));
-					person.setMiddleName(rs.getString(col++));
-					person.setLastName(rs.getString(col++));
-					person.setHomePhone(rs.getString(col++));
-					person.setMobilePhone(rs.getString(col++));
-					person.setWorkPhone(rs.getString(col++));
-					person.setHomeEmail(rs.getString(col++));
-					person.setWorkEmail(rs.getString(col++));
-					person.setHeight(rs.getDouble(col++));
-					person.setWeight(rs.getDouble(col++));
-					person.setGender(rs.getString(col++));
-					person.setRace(rs.getString(col++));
+					person.setFirstName(Encryption.decrypt(rs.getString(col++)));
+					person.setMiddleName(Encryption.decrypt(rs.getString(col++)));
+					person.setLastName(Encryption.decrypt(rs.getString(col++)));
+					person.setHomePhone(Encryption.decrypt(rs.getString(col++)));
+					person.setMobilePhone(Encryption.decrypt(rs.getString(col++)));
+					person.setWorkPhone(Encryption.decrypt(rs.getString(col++)));
+					person.setHomeEmail(Encryption.decrypt(rs.getString(col++)));
+					person.setWorkEmail(Encryption.decrypt(rs.getString(col++)));
+					person.setHeight(Double.parseDouble(Encryption.decrypt(rs.getString(col++))));
+					person.setWeight(Double.parseDouble(Encryption.decrypt(rs.getString(col++))));
+					person.setGender(Encryption.decrypt(rs.getString(col++)));
+					person.setRace(Encryption.decrypt(rs.getString(col++)));
 					person.setDate(rs.getString(col++));
 					person.setTime(rs.getString(col++));
 					person.setAddressId(rs.getInt(col++));
@@ -517,18 +517,18 @@ public class Person {
 				if(rs.next()) { //Checks if the person was returned from the database. If true it will set all the values for the person to their corresponding values from the database. If false it will return null
 					int col = 1;
 					person.setId(rs.getInt(col++));
-					person.setFirstName(rs.getString(col++));
-					person.setMiddleName(rs.getString(col++));
-					person.setLastName(rs.getString(col++));
-					person.setHomePhone(rs.getString(col++));
-					person.setMobilePhone(rs.getString(col++));
-					person.setWorkPhone(rs.getString(col++));
-					person.setHomeEmail(rs.getString(col++));
-					person.setWorkEmail(rs.getString(col++));
-					person.setHeight(rs.getDouble(col++));
-					person.setWeight(rs.getDouble(col++));
-					person.setGender(rs.getString(col++));
-					person.setRace(rs.getString(col++));
+					person.setFirstName(Encryption.decrypt(rs.getString(col++)));
+					person.setMiddleName(Encryption.decrypt(rs.getString(col++)));
+					person.setLastName(Encryption.decrypt(rs.getString(col++)));
+					person.setHomePhone(Encryption.decrypt(rs.getString(col++)));
+					person.setMobilePhone(Encryption.decrypt(rs.getString(col++)));
+					person.setWorkPhone(Encryption.decrypt(rs.getString(col++)));
+					person.setHomeEmail(Encryption.decrypt(rs.getString(col++)));
+					person.setWorkEmail(Encryption.decrypt(rs.getString(col++)));
+					person.setHeight(Double.parseDouble(Encryption.decrypt(rs.getString(col++))));
+					person.setWeight(Double.parseDouble(Encryption.decrypt(rs.getString(col++))));
+					person.setGender(Encryption.decrypt(rs.getString(col++)));
+					person.setRace(Encryption.decrypt(rs.getString(col++)));
 					person.setDate(rs.getString(col++));
 					person.setTime(rs.getString(col++));
 					person.setAddressId(rs.getInt(col++));
@@ -609,18 +609,18 @@ public class Person {
 				if(!helper.exisits(conn, updatedPerson)) { //Makes sure the updated person doesn't exist on the database
 					PreparedStatement ps = conn.prepareStatement("UPDATE person SET firstName=?, middleName=?, lastName=?, homePhone=?, mobilePhone=?, workPhone=?, homeEmail=?, workEmail=?, height=?, weight=?, gender=?, race=?, addressId=?, occupationId=?, date=?, time=? WHERE id =?"); //SQL statement that updates existing data with the new data at the given id
 					//Sets all the ? to the given data from the updated person object
-					ps.setString(1, updatedPerson.getFirstName());
-					ps.setString(2, updatedPerson.getMiddleName());
-					ps.setString(3, updatedPerson.getLastName());
-					ps.setString(4, updatedPerson.getHomePhone());
-					ps.setString(5, updatedPerson.getMobilePhone());
-					ps.setString(6, updatedPerson.getWorkPhone());
-					ps.setString(7, updatedPerson.getHomeEmail());
-					ps.setString(8, updatedPerson.getWorkEmail());
-					ps.setDouble(9, updatedPerson.getHeight());
-					ps.setDouble(10, updatedPerson.getWeight());
-					ps.setString(11, updatedPerson.getGender());
-					ps.setString(12, updatedPerson.getRace());
+					ps.setString(1, Encryption.encrypt(updatedPerson.getFirstName()));
+					ps.setString(2, Encryption.encrypt(updatedPerson.getMiddleName()));
+					ps.setString(3, Encryption.encrypt(updatedPerson.getLastName()));
+					ps.setString(4, Encryption.encrypt(updatedPerson.getHomePhone()));
+					ps.setString(5, Encryption.encrypt(updatedPerson.getMobilePhone()));
+					ps.setString(6, Encryption.encrypt(updatedPerson.getWorkPhone()));
+					ps.setString(7, Encryption.encrypt(updatedPerson.getHomeEmail()));
+					ps.setString(8, Encryption.encrypt(updatedPerson.getWorkEmail()));
+					ps.setString(9, Encryption.encrypt(Double.toString(updatedPerson.getHeight())));
+					ps.setString(10, Encryption.encrypt(Double.toString(updatedPerson.getWeight())));
+					ps.setString(11, Encryption.encrypt(updatedPerson.getGender()));
+					ps.setString(12, Encryption.encrypt(updatedPerson.getRace()));
 					ps.setInt(13, updatedPerson.getAddressId());
 					ps.setInt(14, updatedPerson.getOccupationId());
 					ps.setString(15, updatedPerson.getDate());
@@ -660,18 +660,18 @@ public class Person {
 					if(!helper.exisits(conn, newPerson)) { //Determines if the newPerson is not in the database
 						PreparedStatement ps = conn.prepareStatement("INSERT INTO person (firstName, middleName, lastName, homePhone, mobilePhone, workPhone, homeEmail, workEmail, height, weight, gender, race, addressId, occupationId, date, time) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"); //SQL statement to insert a new person in the database
 						//Sets all the ? to the given data from the new person object
-						ps.setString(1, newPerson.getFirstName());
-						ps.setString(2, newPerson.getMiddleName());
-						ps.setString(3, newPerson.getLastName());
-						ps.setString(4, newPerson.getHomePhone());
-						ps.setString(5, newPerson.getMobilePhone());
-						ps.setString(6, newPerson.getWorkPhone());
-						ps.setString(7, newPerson.getHomeEmail());
-						ps.setString(8, newPerson.getWorkEmail());
-						ps.setDouble(9, newPerson.getHeight());
-						ps.setDouble(10, newPerson.getWeight());
-						ps.setString(11, newPerson.getGender());
-						ps.setString(12, newPerson.getRace());
+						ps.setString(1, Encryption.encrypt(newPerson.getFirstName()));
+						ps.setString(2, Encryption.encrypt(newPerson.getMiddleName()));
+						ps.setString(3, Encryption.encrypt(newPerson.getLastName()));
+						ps.setString(4, Encryption.encrypt(newPerson.getHomePhone()));
+						ps.setString(5, Encryption.encrypt(newPerson.getMobilePhone()));
+						ps.setString(6, Encryption.encrypt(newPerson.getWorkPhone()));
+						ps.setString(7, Encryption.encrypt(newPerson.getHomeEmail()));
+						ps.setString(8, Encryption.encrypt(newPerson.getWorkEmail()));
+						ps.setString(9, Encryption.encrypt(Double.toString(newPerson.getHeight())));
+						ps.setString(10, Encryption.encrypt(Double.toString(newPerson.getWeight())));
+						ps.setString(11, Encryption.encrypt(newPerson.getGender()));
+						ps.setString(12, Encryption.encrypt(newPerson.getRace()));
 						ps.setInt(13, newPerson.getAddressId());
 						ps.setInt(14, newPerson.getOccupationId());
 						ps.setString(15, newPerson.getDate());

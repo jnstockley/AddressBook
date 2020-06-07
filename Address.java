@@ -15,7 +15,7 @@ import java.util.List;
  * This class holds all the necessary commands to create an address object, 
  * and to perform full CRUD on the address table of a given database.
  * @author jnstockley
- * @version 2.5
+ * @version 2.6
  */
 public class Address {
 
@@ -189,11 +189,11 @@ public class Address {
 					int col = 1;
 					Address address = new Address();
 					address.setId(rs.getInt(col++));
-					address.setNumber(rs.getInt(col++));
-					address.setStreet(rs.getString(col++));
-					address.setCity(rs.getString(col++));
-					address.setState(rs.getString(col++));
-					address.setZip(rs.getString(col++));
+					address.setNumber(Integer.parseInt(Encryption.decrypt(rs.getString(col++))));
+					address.setStreet(Encryption.decrypt(rs.getString(col++)));
+					address.setCity(Encryption.decrypt(rs.getString(col++)));
+					address.setState(Encryption.decrypt(rs.getString(col++)));
+					address.setZip(Encryption.decrypt(rs.getString(col++)));
 					address.setDate(rs.getString(col++));
 					address.setTime(rs.getString(col++));
 					addresses.add(address); //Adds the address to the addresses list
@@ -230,11 +230,11 @@ public class Address {
 					int col = 1;
 					Address address = new Address();
 					address.setId(rs.getInt(col++));
-					address.setNumber(rs.getInt(col++));
-					address.setStreet(rs.getString(col++));
-					address.setCity(rs.getString(col++));
-					address.setState(rs.getString(col++));
-					address.setZip(rs.getString(col++));
+					address.setNumber(Integer.parseInt(Encryption.decrypt(rs.getString(col++))));
+					address.setStreet(Encryption.decrypt(rs.getString(col++)));
+					address.setCity(Encryption.decrypt(rs.getString(col++)));
+					address.setState(Encryption.decrypt(rs.getString(col++)));
+					address.setZip(Encryption.decrypt(rs.getString(col++)));
 					address.setDate(rs.getString(col++));
 					address.setTime(rs.getString(col++));
 					similarAddresses.add(address); //Adds the address to the similar addresses list
@@ -271,11 +271,11 @@ public class Address {
 					int col = 1;
 					Address address = new Address();
 					address.setId(rs.getInt(col++));
-					address.setNumber(rs.getInt(col++));
-					address.setStreet(rs.getString(col++));
-					address.setCity(rs.getString(col++));
-					address.setState(rs.getString(col++));
-					address.setZip(rs.getString(col++));
+					address.setNumber(Integer.parseInt(Encryption.decrypt(rs.getString(col++))));
+					address.setStreet(Encryption.decrypt(rs.getString(col++)));
+					address.setCity(Encryption.decrypt(rs.getString(col++)));
+					address.setState(Encryption.decrypt(rs.getString(col++)));
+					address.setZip(Encryption.decrypt(rs.getString(col++)));
 					address.setDate(rs.getString(col++));
 					address.setTime(rs.getString(col++));
 					similarAddresses.add(address); //Adds the address to the similar addresses list
@@ -310,11 +310,11 @@ public class Address {
 				if(rs.next()) { //Checks if the address was returned from the database. If true it will set all the values for the address to their corresponding values from the database. If false will return null
 					int col = 1;
 					address.setId(rs.getInt(col++));
-					address.setNumber(rs.getInt(col++));
-					address.setStreet(rs.getString(col++));
-					address.setCity(rs.getString(col++));
-					address.setState(rs.getString(col++));
-					address.setZip(rs.getString(col++));
+					address.setNumber(Integer.parseInt(Encryption.decrypt(rs.getString(col++))));
+					address.setStreet(Encryption.decrypt(rs.getString(col++)));
+					address.setCity(Encryption.decrypt(rs.getString(col++)));
+					address.setState(Encryption.decrypt(rs.getString(col++)));
+					address.setZip(Encryption.decrypt(rs.getString(col++)));
 					address.setDate(rs.getString(col++));
 					address.setTime(rs.getString(col++));
 					return address;
@@ -364,11 +364,11 @@ public class Address {
 				if(!helper.exisits(conn, updatedAddress)) { //Makes sure the updated address doesn't exist on the database
 					PreparedStatement ps = conn.prepareStatement("UPDATE address SET number=?, street=?, city=?, state=?, zip=?, date=?, time=? WHERE id =?"); //SQL statement that updates existing data with the new data at the given id
 					//Sets all the ? to the given data from the updated address object
-					ps.setInt(1, updatedAddress.getNumber());
-					ps.setString(2, updatedAddress.getStreet());
-					ps.setString(3, updatedAddress.getCity());
-					ps.setString(4, updatedAddress.getState());
-					ps.setString(5, updatedAddress.getZip());
+					ps.setString(1, Encryption.encrypt(Integer.toString(updatedAddress.getNumber())));
+					ps.setString(2, Encryption.encrypt(updatedAddress.getStreet()));
+					ps.setString(3, Encryption.encrypt(updatedAddress.getCity()));
+					ps.setString(4, Encryption.encrypt(updatedAddress.getState()));
+					ps.setString(5, Encryption.encrypt(updatedAddress.getZip()));
 					ps.setString(6, updatedAddress.getDate());
 					ps.setString(7, updatedAddress.getTime());
 					ps.setInt(8, id);
@@ -406,11 +406,11 @@ public class Address {
 					if(!helper.exisits(conn, newAddress)) { //Makes sure the new address doesn't exist on the database
 						PreparedStatement ps = conn.prepareStatement("INSERT INTO address (number, street, city, state, zip, date, time) values (?,?,?,?,?,?,?)"); //SQL statement to insert a new address in the database
 						//Sets all the ? to the given data from the new address object
-						ps.setInt(1, newAddress.getNumber());
-						ps.setString(2, newAddress.getStreet());
-						ps.setString(3, newAddress.getCity());
-						ps.setString(4, newAddress.getState());
-						ps.setString(5, newAddress.getZip());
+						ps.setString(1, Encryption.encrypt(Integer.toString(newAddress.getNumber())));
+						ps.setString(2, Encryption.encrypt(newAddress.getStreet()));
+						ps.setString(3, Encryption.encrypt(newAddress.getCity()));
+						ps.setString(4, Encryption.encrypt(newAddress.getState()));
+						ps.setString(5, Encryption.encrypt(newAddress.getZip()));
 						ps.setString(6, newAddress.getDate());
 						ps.setString(7, newAddress.getTime());
 						ps.execute(); //Sends the insert request to the database

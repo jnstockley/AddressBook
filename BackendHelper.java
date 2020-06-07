@@ -19,7 +19,7 @@ import org.jsoup.nodes.Document;
  */
 public class BackendHelper {
 
-	private double version = 2.5;
+	private double version = 2.6;
 
 	/**
 	 * Checks a file stored on the github repository and gets the current version number and checks if the current version is less then the latest version
