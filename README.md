@@ -1,4 +1,8 @@
 # AddressBook
+
+## Version 2.6
+Version 2.6 has been released! The update adds support for AES encryption and decryption! If you have any problems with the jar on the releases tab or in the code tab, please create an issue!
+
 ## Version 2.5 Released!
 I have just released version 2.5! This program has many improvemnts over the last version, 2.1! Change Log:
 1. Complete re-write to improve stability and fix bugs!
