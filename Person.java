@@ -1,4 +1,4 @@
-package jackstockley.addressbook;
+package com.github.jnstockley.addressbook;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,30 +11,100 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * This class holds all the necessary commands to create a person object,
  * and to perform full CRUD on the person table of a given database.
  * @author jnstockley
- * @version 2.6
+ * @version 3.0
  */
 public class Person {
-
+	
+	@ApiModelProperty(
+			value = "ID of the person",
+			example = "1, 4, 99"
+	)
 	private int id;
+	@ApiModelProperty(
+			value = "First name of the person",
+			example = "Jack, Katie"
+	)
 	private String firstName;
+	@ApiModelProperty(
+			value = "Middle name of the person",
+			example = "Elizabeth, Rese"
+	)
 	private String middleName;
+	@ApiModelProperty(
+			value = "Last name of the person",
+			example = "Smith, Glynn"
+	)
 	private String lastName;
+	@ApiModelProperty(
+			value = "Home phone number of the person",
+			example = "1234567890"
+	)
 	private String homePhone;
+	@ApiModelProperty(
+			value = "Mobile phone number of the person",
+			example = "1234567890"
+	)
 	private String mobilePhone;
+	@ApiModelProperty(
+			value = "Work phone number of the person",
+			example = "1234567890"
+	)
 	private String workPhone;
+	@ApiModelProperty(
+			value = "Personal email of the person",
+			example = "first-name@domain.com"
+	)
 	private String homeEmail;
+	@ApiModelProperty(
+			value = "Work email of the person",
+			example = "first-name@domain.com"
+	)
 	private String workEmail;
+	@ApiModelProperty(
+			value = "Height of the person in cm",
+			example = "170, 164.5"
+	)
 	private double height;
+	@ApiModelProperty(
+			value = "Weight of the person in pounds",
+			example = "150, 135.78"
+	)
 	private double weight;
+	@ApiModelProperty(
+			value = "Gender of the person",
+			example = "Male, Female"
+	)
 	private String gender;
+	@ApiModelProperty(
+			value = "Race of the person",
+			example = "White, Hispanic"
+	)
 	private String race;
+	@ApiModelProperty(
+			value = "Address ID of the corresponding person",
+			example = "1, 4, 99"
+	)
 	private int addressId;
+	@ApiModelProperty(
+			value = "Occupation ID of the corresponding occupation",
+			example = "1, 4, 99"
+	)
 	private int occupationId;
+	@ApiModelProperty(
+			value = "Date the address was created or updated on",
+			example = "2020-01-01"
+	)
 	private String date;
+	@ApiModelProperty(
+			value = "Time the address was created or updated on",
+			example = "00:00:00"
+	)
 	private String time;
 
 	public int getId() {

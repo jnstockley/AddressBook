@@ -1,4 +1,4 @@
-package jackstockley.addressbook;
+package com.github.jnstockley.addressbook;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,21 +11,55 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.swagger.annotations.ApiModelProperty;
+
 /**
  * This class holds all the necessary commands to create an occupation object,
  * and to perform full CRUD on the occupation table of a given database.
  * @author jnstockley
- * @version 2.6
+ * @version 3.0
  */
 public class Occupation {
 
+	@ApiModelProperty(
+			value = "ID of the occupation",
+			example = "1, 4, 99"
+	)
 	private int id;
+	@ApiModelProperty(
+			value = "Compnay name of the occupation",
+			example = "Apple Inc."
+	)
 	private String companyName;
+	@ApiModelProperty(
+			value = "Job Title of the occupation",
+			example = "Teacher, Chef"
+	)
 	private String jobTitle;
+	@ApiModelProperty(
+			value = "Employment type of the occupation",
+			example = "Full-Time, Part-Time"
+	)
 	private String employmentType;
+	@ApiModelProperty(
+			value = "Monthly Salary of the occupation",
+			example = "1200, 3200, 9900"
+	)
 	private String monthlySalary;
+	@ApiModelProperty(
+			value = "Industry of the occupation",
+			example = "Education, Technology"
+	)
 	private String industry;
+	@ApiModelProperty(
+			value = "Date the address was created or updated on",
+			example = "2020-01-01"
+	)
 	private String date;
+	@ApiModelProperty(
+			value = "Time the address was created or updated on",
+			example = "00:00:00"
+	)
 	private String time;
 
 	public int getId() {

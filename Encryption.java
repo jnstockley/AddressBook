@@ -1,4 +1,4 @@
-package jackstockley.addressbook;
+package com.github.jnstockley.addressbook;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -17,20 +17,20 @@ import javax.crypto.spec.SecretKeySpec;
 /**
  * This class helps with AES encryption and decryption of sensitive data before being sent to the database
  * @author jackstockley
- * @version 2.6
+ * @version 3.0
  */
 public class Encryption {
  
     private static SecretKeySpec secretKey;
-    private static byte[] key;
-     
+    private static byte[] key; 
+    
     /**
      * Makes a request to the database and retrieves the key
      * @return The key used to encrypt and decrypt
      */
     private static String getKey() {
     	try {
-			Connection conn = DriverManager.getConnection("jdbc:mysql://10.0.0.191/enc?user=*********&password=*********");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://10.0.0.191/enc?user=Jack&password=Dr1v3r0o");
 			PreparedStatement ps = conn.prepareStatement("SELECT privkey FROM enc");
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
@@ -82,6 +82,7 @@ public class Encryption {
         } 
         catch (Exception e) 
         {
+        	e.printStackTrace();
             System.out.println("Error while encrypting: " + e.toString());
         }
         return null;
@@ -103,6 +104,7 @@ public class Encryption {
         } 
         catch (Exception e) 
         {
+        	e.printStackTrace();
             System.out.println("Error while decrypting: " + e.toString());
         }
         return null;
