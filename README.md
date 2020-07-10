@@ -1,7 +1,7 @@
 # AddressBook
 
 ## Version 3.0
-Version 3.0 has been released! This update adds support for the Swagger Documentation on the RESTful Service! Version 3.0 of the REST service will be released soon! Also A new version will be added under the packages tab. VERSION 3.0 CURRENTLY UNDER PACKAGES TAB DO NOT SUPPORT SWAGGER!
+Version 3.0 has been released! This update adds support for the Swagger Documentation on the RESTful Service! Version 3.0 of the REST service will be released soon!
 
 ## Version 2.6
 Version 2.6 has been released! The update adds support for AES encryption and decryption! If you have any problems with the jar on the releases tab or in the code tab, please create an issue!
