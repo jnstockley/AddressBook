@@ -1,4 +1,4 @@
-package jackstockley.addressbook;
+package com.github.jnstockley.addressbook;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -14,12 +14,12 @@ import org.jsoup.nodes.Document;
  * A simple helper class that helps with checking if data exists on the database and what the newest address,
  * person or occupation is on the database.
  * @author jnstockley
- * @version 2.5
+ * @version 3.0
  *
  */
 public class BackendHelper {
 
-	private double version = 2.6;
+	private double version = 3.0;
 
 	/**
 	 * Checks a file stored on the github repository and gets the current version number and checks if the current version is less then the latest version

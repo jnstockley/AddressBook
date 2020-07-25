@@ -1,4 +1,4 @@
-package jackstockley.addressbook;
+package com.github.jnstockley.addressbook;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,21 +11,55 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.swagger.annotations.ApiModelProperty;
 /**
  * This class holds all the necessary commands to create an address object, 
  * and to perform full CRUD on the address table of a given database.
  * @author jnstockley
- * @version 2.6
+ * @version 3.0
  */
+
 public class Address {
 
+	@ApiModelProperty(
+			value = "ID of the address",
+			example = "1, 4, 99"
+	)
 	private int id;
+	@ApiModelProperty(
+			value = "House number of the address",
+			example = "23, 434, 54345"
+	)
 	private int number;
+	@ApiModelProperty(
+			value = "Street name of the address",
+			example = "Main Street, Main St."
+	)
 	private String street;
+	@ApiModelProperty(
+			value = "City of the address",
+			example = "Chicago, Boston"
+	)
 	private String city;
+	@ApiModelProperty(
+			value = "State of the address",
+			example = "Illinois, IL"
+	)
 	private String state;
+	@ApiModelProperty(
+			value = "Zip code of the address",
+			example = "01721"
+	)
 	private String zip;
+	@ApiModelProperty(
+			value = "Date the address was created or updated on",
+			example = "2020-01-01"
+	)
 	private String date;
+	@ApiModelProperty(
+			value = "Time the address was created or updated on",
+			example = "00:00:00"
+	)
 	private String time;
 
 	public int getId() {
