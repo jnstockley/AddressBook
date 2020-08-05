@@ -1,5 +1,8 @@
 # AddressBook
 
+## Version 3.0.1
+This update includes updates to dependencies. Please update!
+
 ## Version 3.0
 Version 3.0 has been released! This update adds support for the Swagger Documentation on the RESTful Service! Version 3.0 of the REST service will be released soon!
 
