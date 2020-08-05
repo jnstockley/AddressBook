@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  * This class holds all the necessary commands to create an occupation object,
  * and to perform full CRUD on the occupation table of a given database.
  * @author jnstockley
- * @version 3.0
+ * @version 3.0.1
  */
 public class Occupation {
 
