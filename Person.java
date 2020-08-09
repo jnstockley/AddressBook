@@ -17,94 +17,94 @@ import io.swagger.annotations.ApiModelProperty;
  * This class holds all the necessary commands to create a person object,
  * and to perform full CRUD on the person table of a given database.
  * @author jnstockley
- * @version 3.0.1
+ * @version 3.1
  */
 public class Person {
-	
+
 	@ApiModelProperty(
 			value = "ID of the person",
 			example = "1, 4, 99"
-	)
+			)
 	private int id;
 	@ApiModelProperty(
 			value = "First name of the person",
 			example = "Jack, Katie"
-	)
+			)
 	private String firstName;
 	@ApiModelProperty(
 			value = "Middle name of the person",
 			example = "Elizabeth, Rese"
-	)
+			)
 	private String middleName;
 	@ApiModelProperty(
 			value = "Last name of the person",
 			example = "Smith, Glynn"
-	)
+			)
 	private String lastName;
 	@ApiModelProperty(
 			value = "Home phone number of the person",
 			example = "1234567890"
-	)
+			)
 	private String homePhone;
 	@ApiModelProperty(
 			value = "Mobile phone number of the person",
 			example = "1234567890"
-	)
+			)
 	private String mobilePhone;
 	@ApiModelProperty(
 			value = "Work phone number of the person",
 			example = "1234567890"
-	)
+			)
 	private String workPhone;
 	@ApiModelProperty(
 			value = "Personal email of the person",
 			example = "first-name@domain.com"
-	)
+			)
 	private String homeEmail;
 	@ApiModelProperty(
 			value = "Work email of the person",
 			example = "first-name@domain.com"
-	)
+			)
 	private String workEmail;
 	@ApiModelProperty(
 			value = "Height of the person in cm",
 			example = "170, 164.5"
-	)
+			)
 	private double height;
 	@ApiModelProperty(
 			value = "Weight of the person in pounds",
 			example = "150, 135.78"
-	)
+			)
 	private double weight;
 	@ApiModelProperty(
 			value = "Gender of the person",
 			example = "Male, Female"
-	)
+			)
 	private String gender;
 	@ApiModelProperty(
 			value = "Race of the person",
 			example = "White, Hispanic"
-	)
+			)
 	private String race;
 	@ApiModelProperty(
 			value = "Address ID of the corresponding person",
 			example = "1, 4, 99"
-	)
+			)
 	private int addressId;
 	@ApiModelProperty(
 			value = "Occupation ID of the corresponding occupation",
 			example = "1, 4, 99"
-	)
+			)
 	private int occupationId;
 	@ApiModelProperty(
 			value = "Date the address was created or updated on",
 			example = "2020-01-01"
-	)
+			)
 	private String date;
 	@ApiModelProperty(
 			value = "Time the address was created or updated on",
 			example = "00:00:00"
-	)
+			)
 	private String time;
 
 	public int getId() {
@@ -209,17 +209,17 @@ public class Person {
 	public void setTime(String time) {
 		this.time = time;
 	}
-	
+
 	@Override
 	/**
 	 * Prints out the person object with formatting for better human readability
 	 */
 	public String toString() {
 		return "ID: " + this.getId() + "\n" + this.getFirstName() + " " + this.getMiddleName() + " " + this.getLastName() 
-			+ "\nHome Phone: " + this.getHomePhone() + " Mobile Phone: " + this.getMobilePhone() + " Work Phone: " + this.getWorkPhone()
-			+ "\nHome Email: " + this.getHomeEmail() + " Work Email: " + this.getWorkEmail() 
-			+ "\nHeight: " + this.getHeight() + " Weight: " + this.getWeight() + " Gender: " + this.getGender() + " Race: " + this.getRace()
-			+ "\nAddress ID: " + this.getAddressId() +  " OccupationID: " + this.getOccupationId() + " Date Created: " + this.getDate() + " Time Created: " + this.getTime() + "\n"; 
+		+ "\nHome Phone: " + this.getHomePhone() + " Mobile Phone: " + this.getMobilePhone() + " Work Phone: " + this.getWorkPhone()
+		+ "\nHome Email: " + this.getHomeEmail() + " Work Email: " + this.getWorkEmail() 
+		+ "\nHeight: " + this.getHeight() + " Weight: " + this.getWeight() + " Gender: " + this.getGender() + " Race: " + this.getRace()
+		+ "\nAddress ID: " + this.getAddressId() +  " OccupationID: " + this.getOccupationId() + " Date Created: " + this.getDate() + " Time Created: " + this.getTime() + "\n"; 
 	}
 
 	/**
@@ -239,23 +239,7 @@ public class Person {
 	 * Creates a person object with all the fields set to either 0, 0.0 or an empty string
 	 */
 	public Person() {
-		this.setId(0);
-		this.setFirstName("");
-		this.setMiddleName("");
-		this.setLastName("");
-		this.setHomePhone("0");
-		this.setMobilePhone("0");
-		this.setWorkPhone("0");
-		this.setHomeEmail("");
-		this.setWorkEmail("");
-		this.setHeight(0.0);
-		this.setWeight(0.0);
-		this.setGender("");
-		this.setRace("");
-		this.setAddressId(0);
-		this.setOccupationId(0);
-		this.setDate("");
-		this.setTime("");
+		this(0, "", "", "", "0", "0", "0", "", "", 0.0, 0.0, "", "", 0, 0, "", "");
 	}
 
 	/**
@@ -276,23 +260,7 @@ public class Person {
 	 * @param occupationID The occupation id which corresponds to an occupation on the database
 	 */
 	public Person(String firstName, String middleName, String lastName, String homePhone, String mobilePhone, String workPhone, String homeEmail, String workEmail, double height, double weight, String gender, String race, int addressID, int occupationID) {
-		this.setId(0);
-		this.setFirstName(firstName);
-		this.setMiddleName(middleName);
-		this.setLastName(lastName);
-		this.setHomePhone(homePhone);
-		this.setMobilePhone(mobilePhone);
-		this.setWorkPhone(workPhone);
-		this.setHomeEmail(homeEmail);
-		this.setWorkEmail(workEmail);
-		this.setHeight(height);
-		this.setWeight(weight);
-		this.setGender(gender);
-		this.setRace(race);
-		this.setAddressId(addressID);
-		this.setOccupationId(addressID);
-		this.setDate("");
-		this.setTime("");
+		this(0, firstName, middleName, lastName, homePhone, mobilePhone, workPhone, homeEmail, workEmail, height, weight, gender, race, addressID, occupationID, "", "");
 	}
 
 	/**
@@ -314,23 +282,7 @@ public class Person {
 	 * @param occupationID The occupation id which corresponds to an occupation on the database
 	 */
 	public Person(int id, String firstName, String middleName, String lastName, String homePhone, String mobilePhone, String workPhone, String homeEmail, String workEmail, double height, double weight, String gender, String race, int addressID, int occupationID) {
-		this.setId(id);
-		this.setFirstName(firstName);
-		this.setMiddleName(middleName);
-		this.setLastName(lastName);
-		this.setHomePhone(homePhone);
-		this.setMobilePhone(mobilePhone);
-		this.setWorkPhone(workPhone);
-		this.setHomeEmail(homeEmail);
-		this.setWorkEmail(workEmail);
-		this.setHeight(height);
-		this.setWeight(weight);
-		this.setGender(gender);
-		this.setRace(race);
-		this.setAddressId(addressID);
-		this.setOccupationId(addressID);
-		this.setDate("");
-		this.setTime("");
+		this(id, firstName, middleName, lastName, homePhone, mobilePhone, workPhone, homeEmail, workEmail, height, weight, gender, race, addressID, occupationID, "", "");
 	}
 
 	/**
@@ -368,7 +320,7 @@ public class Person {
 		this.setGender(gender);
 		this.setRace(race);
 		this.setAddressId(addressID);
-		this.setOccupationId(addressID);
+		this.setOccupationId(occupationID);
 		this.setDate(date);
 		this.setTime(time);
 	}
@@ -378,7 +330,7 @@ public class Person {
 	 * @param conn The MySQL connection
 	 * @return Either returns a list of people or null if there was an error getting all the people
 	 */
-	public List<Person> getAllPeople(Connection conn){
+	public List<Person> get(Connection conn){
 		try {
 			if(conn.isValid(30)) { //Checks if the SQL connection is valid
 				List<Person> people = new ArrayList<Person>(); //Creates an empty list of people to store all people on the database
@@ -426,7 +378,9 @@ public class Person {
 	 * @param field The field used to determine if a person is similar
 	 * @param data The value for the passed field to determine if a person is similar
 	 * @return Either returns a list of similar people or null if there was error getting similar people
+	 * @deprecated 
 	 */
+	@Deprecated
 	public List<Person> getSimilarPeople(Connection conn, String field, String data){
 		try {
 			if(conn.isValid(30)) { //Checks if the SQL connection is valid
@@ -476,7 +430,9 @@ public class Person {
 	 * @param field The field used to determine if a person is similar
 	 * @param data The value for the passed field to determine if a person is similar
 	 * @return Either returns a list of similar people or null if there was an error getting similar people
+	 * @deprecated 
 	 */
+	@Deprecated
 	public List<Person> getSimilarPeople(Connection conn, String field, int data){
 		try {
 			if(conn.isValid(30)) { //Checks if the SQL connection is valid
@@ -526,7 +482,9 @@ public class Person {
 	 * @param field The field used to determine if a person is similar
 	 * @param data The value for the passed field to determine if a person is similar
 	 * @return Either returns a list of similar people or null if there was an error getting similar people
+	 * @deprecated
 	 */
+	@Deprecated
 	public List<Person> getSimilarPeople(Connection conn, String field, double data){
 		try {
 			if(conn.isValid(30)) { //Checks if the SQL connection is valid
@@ -570,14 +528,14 @@ public class Person {
 		}
 	}
 
-	
+
 	/**
 	 * Retrieves a singular person based on the passed ID and returns it
 	 * @param conn The MySQL connection
 	 * @param id The ID of the person to be returned
 	 * @return Either the requested person from the database or null if there was an error getting the person
 	 */
-	public Person getSingularPerson(Connection conn, int id) {
+	public Person get(Connection conn, int id) {
 		try {
 			if(conn.isValid(30)) { //Checks if the SQL connection is valid
 				Person person = new Person(); //Creates an empty person to store the person on the database
@@ -625,14 +583,14 @@ public class Person {
 	 * @param updatedPerson The new person that is going to be updated
 	 * @return Either returns the person passed, confirming the update or null if the person was not updated
 	 */
-	public Person updatePerson(Connection conn, int id, Person updatedPerson) {
+	public Person update(Connection conn, int id, Person updatedPerson) {
 		try {
 			if(conn.isValid(30)) { //Checks if the MySQL connection is valid
 				BackendHelper helper = new BackendHelper(); //Creates a backend helper to help check for existing people in the database
 				updatedPerson.setId(id); //Sets the id of the person
 				updatedPerson.setDate(Date.valueOf(LocalDate.now()).toString()); //Sets the current date to the person
 				updatedPerson.setTime(Time.valueOf(LocalTime.now()).toString()); //Sets the current time to the person
-				Person oldPerson = getSingularPerson(conn, id); //Creates a person object and sets it to the current person stored on the database at the given id
+				Person oldPerson = get(conn, id); //Creates a person object and sets it to the current person stored on the database at the given id
 				//Checks if any field in the updated person is empty and replaces it with data from the current person on the database
 				if(updatedPerson.getFirstName().equalsIgnoreCase("")) {
 					updatedPerson.setFirstName(oldPerson.getFirstName());
@@ -697,7 +655,7 @@ public class Person {
 					ps.setString(16, updatedPerson.getTime());
 					ps.setInt(17, id);
 					ps.executeUpdate(); //Sends the update request to the database
-					if(getSingularPerson(conn, id).equals(updatedPerson)) { //Makes sure the requested person was successfully updated
+					if(get(conn, id).equals(updatedPerson)) { //Makes sure the requested person was successfully updated
 						return updatedPerson;
 					}else { //Person not updated
 						return null;
@@ -720,7 +678,7 @@ public class Person {
 	 * @param newPerson The new person this is going to be inserted into the database
 	 * @return Either returns the passed person, confirming the insert or null if the person wasn't updated
 	 */
-	public Person insertPerson(Connection conn, Person newPerson) {
+	public Person insert(Connection conn, Person newPerson) {
 		try {
 			if(conn.isValid(30)) { //Checks if the MySQL connection is valid!
 				if(!newPerson.getFirstName().equals("") && !newPerson.getMiddleName().equals("") && !newPerson.getLastName().equals("") && !newPerson.getHomePhone().equals("0") && !newPerson.getMobilePhone().equals("0") && !newPerson.getWorkPhone().equals("0") && !newPerson.getHomeEmail().equals("") && !newPerson.getWorkEmail().equals("") && newPerson.getHeight() != 0.0 && newPerson.getWeight() != 0.0 && !newPerson.getGender().equals("") && !newPerson.getRace().equals("") && newPerson.getAddressId() != 0 && newPerson.getOccupationId() != 0) { //Makes sure all the values of the new person aren't empty or 0
@@ -750,7 +708,7 @@ public class Person {
 						int id = helper.mostRecentPerson(conn); //Gets the most recent id from the person table
 						if(id!=-1) { //Checks to make sure the id is valid
 							newPerson.setId(id); //Sets the id of the new person
-							if(getSingularPerson(conn, id).equals(newPerson)) { //Makes sure the requested person was successfully inserted
+							if(get(conn, id).equals(newPerson)) { //Makes sure the requested person was successfully inserted
 								return newPerson;
 							}else { //New person not inserted
 								return null;
@@ -779,15 +737,15 @@ public class Person {
 	 * @param id The ID of the person to be removed
 	 * @return Either true if the person was removed or false if it wasn't
 	 */
-	public boolean removePerson(Connection conn, int id) {
+	public boolean delete(Connection conn, int id) {
 		try {
 			if(conn.isValid(30)) { //Checks if the MySQL connection is valid
-				Person person = getSingularPerson(conn, id); //Gets the current person from the database
+				Person person = get(conn, id); //Gets the current person from the database
 				if(person!=null) { //Checks if the person is on the database
 					PreparedStatement ps = conn.prepareStatement("DELETE FROM person WHERE id = ?"); //SQL statement to remove a given person
 					ps.setInt(1, id); //Sets the first ? to the id of the person to remove
 					ps.execute(); //Sends the delete request to the database
-					if(getSingularPerson(conn, id) == null) { //Checks that the person was removed from the database
+					if(get(conn, id) == null) { //Checks that the person was removed from the database
 						return true;
 					}else { //Person not removed
 						return false;

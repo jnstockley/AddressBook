@@ -17,7 +17,7 @@ import javax.crypto.spec.SecretKeySpec;
 /**
  * This class helps with AES encryption and decryption of sensitive data before being sent to the database
  * @author jackstockley
- * @version 3.0.1
+ * @version 3.1
  */
 public class Encryption {
  

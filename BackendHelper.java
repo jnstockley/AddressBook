@@ -14,12 +14,12 @@ import org.jsoup.nodes.Document;
  * A simple helper class that helps with checking if data exists on the database and what the newest address,
  * person or occupation is on the database.
  * @author jnstockley
- * @version 3.0.1
+ * @version 3.1
  *
  */
 public class BackendHelper {
 
-	private double version = 3.01;
+	private double version = 3.1;
 
 	/**
 	 * Checks a file stored on the github repository and gets the current version number and checks if the current version is less then the latest version
@@ -47,7 +47,7 @@ public class BackendHelper {
 	 * @return True if address is on the database false otherwise
 	 */
 	public boolean exisits(Connection conn, Address address) {
-		List<Address> addresses = address.getAllAddresses(conn); //Creates a list of all addresses on the database
+		List<Address> addresses = address.get(conn); //Creates a list of all addresses on the database
 		for(Address exisitingAddresses: addresses) { //Loops through all addresses
 			if(exisitingAddresses.equals(address)) { //Checks address on database is equal to passed address
 				return true;
@@ -63,7 +63,7 @@ public class BackendHelper {
 	 * @return True if occupation is on the database false otherwise
 	 */
 	public boolean exisits(Connection conn, Occupation occupation) {
-		List<Occupation> occupations = occupation.getAllOccupations(conn); //Creates a list of all occupation on the database
+		List<Occupation> occupations = occupation.get(conn); //Creates a list of all occupation on the database
 		for(Occupation exisitingOccupations: occupations) { //Loops through all occupations
 			if(exisitingOccupations.equals(occupation)) { //Checks occupation on database is equal to passed occupation
 				return true;
@@ -79,7 +79,7 @@ public class BackendHelper {
 	 * @return True if person is on the database false otherwise
 	 */
 	public boolean exisits(Connection conn, Person person) {
-		List<Person> people = person.getAllPeople(conn); //Creates a list of all people on the database
+		List<Person> people = person.get(conn); //Creates a list of all people on the database
 		for(Person exisitingPerson: people) { //Loops through all people
 			if(exisitingPerson.equals(person)) { //Checks person on database is equal to passed person
 				return true;

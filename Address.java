@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * This class holds all the necessary commands to create an address object, 
  * and to perform full CRUD on the address table of a given database.
  * @author jnstockley
- * @version 3.0.1
+ * @version 3.1
  */
 
 public class Address {
@@ -24,42 +24,42 @@ public class Address {
 	@ApiModelProperty(
 			value = "ID of the address",
 			example = "1, 4, 99"
-	)
+			)
 	private int id;
 	@ApiModelProperty(
 			value = "House number of the address",
 			example = "23, 434, 54345"
-	)
+			)
 	private int number;
 	@ApiModelProperty(
 			value = "Street name of the address",
 			example = "Main Street, Main St."
-	)
+			)
 	private String street;
 	@ApiModelProperty(
 			value = "City of the address",
 			example = "Chicago, Boston"
-	)
+			)
 	private String city;
 	@ApiModelProperty(
 			value = "State of the address",
 			example = "Illinois, IL"
-	)
+			)
 	private String state;
 	@ApiModelProperty(
 			value = "Zip code of the address",
 			example = "01721"
-	)
+			)
 	private String zip;
 	@ApiModelProperty(
 			value = "Date the address was created or updated on",
 			example = "2020-01-01"
-	)
+			)
 	private String date;
 	@ApiModelProperty(
 			value = "Time the address was created or updated on",
 			example = "00:00:00"
-	)
+			)
 	private String time;
 
 	public int getId() {
@@ -137,14 +137,7 @@ public class Address {
 	 * Creates an address object with all the field set to either 0 or an empty string
 	 */
 	public Address() {
-		this.setId(0);
-		this.setNumber(0);
-		this.setStreet("");
-		this.setCity("");
-		this.setState("");
-		this.setZip("");
-		this.setDate("");
-		this.setTime("");
+		this(0, 0, "", "", "", "", "", "");
 	}
 
 	/**
@@ -156,14 +149,7 @@ public class Address {
 	 * @param zip The zip code of the address
 	 */
 	public Address(int number, String street, String city, String state, String zip) {
-		this.setId(0);
-		this.setNumber(number);
-		this.setStreet(street);
-		this.setCity(city);
-		this.setState(state);
-		this.setZip(zip);
-		this.setDate("");
-		this.setTime("");
+		this(0, number, street, city, state, zip, "", "");
 	}
 
 	/**
@@ -176,14 +162,7 @@ public class Address {
 	 * @param zip The zip code of the address
 	 */
 	public Address(int id, int number, String street, String city, String state, String zip) {
-		this.setId(id);
-		this.setNumber(number);
-		this.setStreet(street);
-		this.setCity(city);
-		this.setState(state);
-		this.setZip(zip);
-		this.setDate("");
-		this.setTime("");
+		this(id, number, street, city, state, zip, "", "");
 	}
 
 	/**
@@ -213,7 +192,7 @@ public class Address {
 	 * @param conn The MySQL connection
 	 * @return Either returns a list of addresses or null if there was an error getting all addresses
 	 */
-	public List<Address> getAllAddresses(Connection conn){
+	public List<Address> get(Connection conn){
 		try {
 			if(conn.isValid(30)) { //Checks if the SQL connection is valid
 				List<Address> addresses = new ArrayList<Address>(); //Creates an empty list of addresses to store all addresses on the database
@@ -252,7 +231,9 @@ public class Address {
 	 * @param field The field used to determine if an address is similar
 	 * @param data The value for the passed field to determine if an address is similar
 	 * @return Either returns a list of similar addresses or null if there was an error getting similar addresses
+	 * @deprecated 
 	 */
+	@Deprecated
 	public List<Address> getSimilarAddress(Connection conn, String field, String data){
 		try {
 			if(conn.isValid(30)) { //Checks if the SQL connection is valid
@@ -293,7 +274,9 @@ public class Address {
 	 * @param field The field used to determine if an address is similar
 	 * @param data The values for the passed field to determine if an address is similar
 	 * @return Either returns a list of similar addresses or null if there was an error getting similar addresses
+	 * @deprecated 
 	 */
+	@Deprecated
 	public List<Address> getSimilarAddress(Connection conn, String field, int data){
 		try {
 			if(conn.isValid(30)) { //Checks if the SQL connection is valid
@@ -334,7 +317,7 @@ public class Address {
 	 * @param id The ID of the address to be returned
 	 * @return Either the requested address from the database or null if there was an error getting the address
 	 */
-	public Address getSingularAddress(Connection conn, int id){
+	public Address get(Connection conn, int id){
 		try {
 			if(conn.isValid(30)) { //Checks if the SQL connection is valid
 				Address address = new Address(); //Creates an empty address to store the address on the database
@@ -371,14 +354,14 @@ public class Address {
 	 * @param updatedAddress The new address that is going to be updated
 	 * @return Either returns the address passed, confirming the update or null if the address was not updated
 	 */
-	public Address updateAddress(Connection conn, int id, Address updatedAddress) {
+	public Address update(Connection conn, int id, Address updatedAddress) {
 		try {
 			if(conn.isValid(30)) { //Checks if the MySQL connection is valid
 				BackendHelper helper = new BackendHelper(); //Creates a backend helper to help check for existing addresses in the database
 				updatedAddress.setId(id); //Sets the id to the address
 				updatedAddress.setDate(Date.valueOf(LocalDate.now()).toString()); //Sets the current date to the address
 				updatedAddress.setTime(Time.valueOf(LocalTime.now()).toString()); //Sets the current time to the address
-				Address oldAddress = getSingularAddress(conn, id); //Creates an address object and sets it to the current address stored on the database at the given id
+				Address oldAddress = get(conn, id); //Creates an address object and sets it to the current address stored on the database at the given id
 				//Checks if any field in the updated address is empty and replaces it with the data from the current address on the database
 				if(updatedAddress.getNumber() == 0) {
 					updatedAddress.setNumber(oldAddress.getNumber());
@@ -407,7 +390,7 @@ public class Address {
 					ps.setString(7, updatedAddress.getTime());
 					ps.setInt(8, id);
 					ps.executeUpdate(); //Sends the update request to the database
-					if(getSingularAddress(conn, id).equals(updatedAddress)) { //Makes sure the requested address was successfully updated
+					if(get(conn, id).equals(updatedAddress)) { //Makes sure the requested address was successfully updated
 						return updatedAddress;
 					}else { //Address not updated
 						return null;
@@ -430,7 +413,7 @@ public class Address {
 	 * @param newAddress The new address that is going to be inserted into the database
 	 * @return Either returns the passed address, confirming the insert or null if the address wasn't inserted
 	 */
-	public Address insertAddress(Connection conn, Address newAddress) {
+	public Address insert(Connection conn, Address newAddress) {
 		try {
 			if(conn.isValid(30)) { //Checks if the MySQL connection is valid!
 				if(newAddress.getNumber() != 0 && !newAddress.getStreet().equals("") && !newAddress.getCity().equals("") && !newAddress.getState().equals("") && !newAddress.getZip().equals("")) { //Makes sure all the values of the new address aren't empty or 0
@@ -451,7 +434,7 @@ public class Address {
 						int id = helper.mostRecentAddress(conn); //Gets the most recent id from the address table
 						if(id!=-1) { //Checks to make sure the id is valid
 							newAddress.setId(id); //Sets the id of the new address
-							if(getSingularAddress(conn, id).equals(newAddress)) { //Makes sure the requested address was successfully inserted
+							if(get(conn, id).equals(newAddress)) { //Makes sure the requested address was successfully inserted
 								return newAddress;
 							}else { //New address not inserted
 								return null;
@@ -480,15 +463,15 @@ public class Address {
 	 * @param id The ID of the address to be removed
 	 * @return Either true if the address was removed or false if it wasn't
 	 */
-	public boolean removeAddress(Connection conn, int id) {
+	public boolean delete(Connection conn, int id) {
 		try {
 			if(conn.isValid(30)) { //Checks if the MySQL connection is valid
-				Address address = getSingularAddress(conn, id); //Gets current address from database
+				Address address = get(conn, id); //Gets current address from database
 				if(address!=null) { //Confirms the returned address isn't null
 					PreparedStatement ps = conn.prepareStatement("DELETE FROM address WHERE id = ?"); //SQL statement to remove an address with the given id
 					ps.setInt(1, id); //Sets the first ? to the id of the address to remove
 					ps.executeUpdate(); //Sends the delete request to the database
-					if(getSingularAddress(conn, id) == null) { //Checks that the address was removed from the database
+					if(get(conn, id) == null) { //Checks that the address was removed from the database
 						return true;
 					}else { //Address not removed
 						return false;
