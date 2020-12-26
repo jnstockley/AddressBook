@@ -1,5 +1,8 @@
 # AddressBook
 
+## Version 3.2
+This version includes updated dependencies.
+
 ## Version 3.1
 Fixed bug where address id and occupation id are the same, updated how the constructors work on the back end, and deprecated all getSimilar methods.
 
