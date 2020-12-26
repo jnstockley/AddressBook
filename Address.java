@@ -16,7 +16,7 @@ import io.swagger.annotations.ApiModelProperty;
  * This class holds all the necessary commands to create an address object, 
  * and to perform full CRUD on the address table of a given database.
  * @author jnstockley
- * @version 3.1
+ * @version 3.2
  */
 
 public class Address {
@@ -62,51 +62,114 @@ public class Address {
 			)
 	private String time;
 
+	/**
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
+
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	/**
+	 * @return the number
+	 */
 	public int getNumber() {
 		return number;
 	}
+
+	/**
+	 * @param number the number to set
+	 */
 	public void setNumber(int number) {
 		this.number = number;
 	}
+
+	/**
+	 * @return the street
+	 */
 	public String getStreet() {
 		return street;
 	}
+
+	/**
+	 * @param street the street to set
+	 */
 	public void setStreet(String street) {
 		this.street = street;
 	}
+
+	/**
+	 * @return the city
+	 */
 	public String getCity() {
 		return city;
 	}
+
+	/**
+	 * @param city the city to set
+	 */
 	public void setCity(String city) {
 		this.city = city;
 	}
+
+	/**
+	 * @return the state
+	 */
 	public String getState() {
 		return state;
 	}
+
+	/**
+	 * @param state the state to set
+	 */
 	public void setState(String state) {
 		this.state = state;
 	}
+
+	/**
+	 * @return the zip
+	 */
 	public String getZip() {
 		return zip;
 	}
+
+	/**
+	 * @param zip the zip to set
+	 */
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
+
+	/**
+	 * @return the date
+	 */
 	public String getDate() {
 		return date;
 	}
+
+	/**
+	 * @param date the date to set
+	 */
 	public void setDate(String date) {
 		this.date = date;
 	}
+
+	/**
+	 * @return the time
+	 */
 	public String getTime() {
 		return time;
 	}
+
+	/**
+	 * @param time the time to set
+	 */
 	public void setTime(String time) {
 		this.time = time;
 	}
@@ -195,6 +258,7 @@ public class Address {
 	public List<Address> get(Connection conn){
 		try {
 			if(conn.isValid(30)) { //Checks if the SQL connection is valid
+				BackendHelper helper = new BackendHelper();
 				List<Address> addresses = new ArrayList<Address>(); //Creates an empty list of addresses to store all addresses on the database
 				PreparedStatement ps = conn.prepareStatement("SELECT id, number, street, city, state, zip, date, time FROM address"); //SQL statement to get all the addresses from the database
 				ResultSet rs = ps.executeQuery(); //Retrieves all the addresses from the database

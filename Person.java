@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  * This class holds all the necessary commands to create a person object,
  * and to perform full CRUD on the person table of a given database.
  * @author jnstockley
- * @version 3.1
+ * @version 3.2
  */
 public class Person {
 
@@ -107,105 +107,240 @@ public class Person {
 			)
 	private String time;
 
+	/**
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
+
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	/**
+	 * @return the firstName
+	 */
 	public String getFirstName() {
 		return firstName;
 	}
+
+	/**
+	 * @param firstName the firstName to set
+	 */
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+
+	/**
+	 * @return the middleName
+	 */
 	public String getMiddleName() {
 		return middleName;
 	}
+
+	/**
+	 * @param middleName the middleName to set
+	 */
 	public void setMiddleName(String middleName) {
 		this.middleName = middleName;
 	}
+
+	/**
+	 * @return the lastName
+	 */
 	public String getLastName() {
 		return lastName;
 	}
+
+	/**
+	 * @param lastName the lastName to set
+	 */
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	/**
+	 * @return the homePhone
+	 */
 	public String getHomePhone() {
 		return homePhone;
 	}
+
+	/**
+	 * @param homePhone the homePhone to set
+	 */
 	public void setHomePhone(String homePhone) {
 		this.homePhone = homePhone;
 	}
+
+	/**
+	 * @return the mobilePhone
+	 */
 	public String getMobilePhone() {
 		return mobilePhone;
 	}
+
+	/**
+	 * @param mobilePhone the mobilePhone to set
+	 */
 	public void setMobilePhone(String mobilePhone) {
 		this.mobilePhone = mobilePhone;
 	}
+
+	/**
+	 * @return the workPhone
+	 */
 	public String getWorkPhone() {
 		return workPhone;
 	}
+
+	/**
+	 * @param workPhone the workPhone to set
+	 */
 	public void setWorkPhone(String workPhone) {
 		this.workPhone = workPhone;
 	}
+
+	/**
+	 * @return the homeEmail
+	 */
 	public String getHomeEmail() {
 		return homeEmail;
 	}
+
+	/**
+	 * @param homeEmail the homeEmail to set
+	 */
 	public void setHomeEmail(String homeEmail) {
 		this.homeEmail = homeEmail;
 	}
+
+	/**
+	 * @return the workEmail
+	 */
 	public String getWorkEmail() {
 		return workEmail;
 	}
+
+	/**
+	 * @param workEmail the workEmail to set
+	 */
 	public void setWorkEmail(String workEmail) {
 		this.workEmail = workEmail;
 	}
+
+	/**
+	 * @return the height
+	 */
 	public double getHeight() {
 		return height;
 	}
+
+	/**
+	 * @param height the height to set
+	 */
 	public void setHeight(double height) {
 		this.height = height;
 	}
+
+	/**
+	 * @return the weight
+	 */
 	public double getWeight() {
 		return weight;
 	}
+
+	/**
+	 * @param weight the weight to set
+	 */
 	public void setWeight(double weight) {
 		this.weight = weight;
 	}
+
+	/**
+	 * @return the gender
+	 */
 	public String getGender() {
 		return gender;
 	}
+
+	/**
+	 * @param gender the gender to set
+	 */
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+
+	/**
+	 * @return the race
+	 */
 	public String getRace() {
 		return race;
 	}
+
+	/**
+	 * @param race the race to set
+	 */
 	public void setRace(String race) {
 		this.race = race;
 	}
+
+	/**
+	 * @return the addressId
+	 */
 	public int getAddressId() {
 		return addressId;
 	}
+
+	/**
+	 * @param addressId the addressId to set
+	 */
 	public void setAddressId(int addressId) {
 		this.addressId = addressId;
 	}
+
+	/**
+	 * @return the occupationId
+	 */
 	public int getOccupationId() {
 		return occupationId;
 	}
+
+	/**
+	 * @param occupationId the occupationId to set
+	 */
 	public void setOccupationId(int occupationId) {
 		this.occupationId = occupationId;
 	}
+
+	/**
+	 * @return the date
+	 */
 	public String getDate() {
 		return date;
 	}
+
+	/**
+	 * @param date the date to set
+	 */
 	public void setDate(String date) {
 		this.date = date;
 	}
+
+	/**
+	 * @return the time
+	 */
 	public String getTime() {
 		return time;
 	}
+
+	/**
+	 * @param time the time to set
+	 */
 	public void setTime(String time) {
 		this.time = time;
 	}

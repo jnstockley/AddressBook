@@ -17,7 +17,7 @@ import io.swagger.annotations.ApiModelProperty;
  * This class holds all the necessary commands to create an occupation object,
  * and to perform full CRUD on the occupation table of a given database.
  * @author jnstockley
- * @version 3.1
+ * @version 3.2
  */
 public class Occupation {
 
@@ -62,51 +62,114 @@ public class Occupation {
 			)
 	private String time;
 
+	/**
+	 * @return the id
+	 */
 	public int getId() {
 		return id;
 	}
+
+	/**
+	 * @param id the id to set
+	 */
 	public void setId(int id) {
 		this.id = id;
 	}
+
+	/**
+	 * @return the companyName
+	 */
 	public String getCompanyName() {
 		return companyName;
 	}
+
+	/**
+	 * @param companyName the companyName to set
+	 */
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
+
+	/**
+	 * @return the jobTitle
+	 */
 	public String getJobTitle() {
 		return jobTitle;
 	}
+
+	/**
+	 * @param jobTitle the jobTitle to set
+	 */
 	public void setJobTitle(String jobTitle) {
 		this.jobTitle = jobTitle;
 	}
+
+	/**
+	 * @return the employmentType
+	 */
 	public String getEmploymentType() {
 		return employmentType;
 	}
+
+	/**
+	 * @param employmentType the employmentType to set
+	 */
 	public void setEmploymentType(String employmentType) {
 		this.employmentType = employmentType;
 	}
+
+	/**
+	 * @return the monthlySalary
+	 */
 	public String getMonthlySalary() {
 		return monthlySalary;
 	}
+
+	/**
+	 * @param monthlySalary the monthlySalary to set
+	 */
 	public void setMonthlySalary(String monthlySalary) {
 		this.monthlySalary = monthlySalary;
 	}
+
+	/**
+	 * @return the industry
+	 */
 	public String getIndustry() {
 		return industry;
 	}
+
+	/**
+	 * @param industry the industry to set
+	 */
 	public void setIndustry(String industry) {
 		this.industry = industry;
 	}
+
+	/**
+	 * @return the date
+	 */
 	public String getDate() {
 		return date;
 	}
+
+	/**
+	 * @param date the date to set
+	 */
 	public void setDate(String date) {
 		this.date = date;
 	}
+
+	/**
+	 * @return the time
+	 */
 	public String getTime() {
 		return time;
 	}
+
+	/**
+	 * @param time the time to set
+	 */
 	public void setTime(String time) {
 		this.time = time;
 	}

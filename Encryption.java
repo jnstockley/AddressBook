@@ -17,10 +17,10 @@ import javax.crypto.spec.SecretKeySpec;
 /**
  * This class helps with AES encryption and decryption of sensitive data before being sent to the database
  * @author jackstockley
- * @version 3.1
+ * @version 3.2
  */
 public class Encryption {
- 
+	
     private static SecretKeySpec secretKey;
     private static byte[] key; 
     
@@ -30,7 +30,7 @@ public class Encryption {
      */
     private static String getKey() {
     	try {
-			Connection conn = DriverManager.getConnection("jdbc:mysql://10.0.0.191/enc?user=Jack&password=Dr1v3r0o");
+			Connection conn = DriverManager.getConnection("jdbc:mysql://10.0.0.5/enc?user=jackstockley&password=Dr1v3r0o");
 			PreparedStatement ps = conn.prepareStatement("SELECT privkey FROM enc");
 			ResultSet rs = ps.executeQuery();
 			if(rs.next()) {
@@ -104,6 +104,7 @@ public class Encryption {
         } 
         catch (Exception e) 
         {
+        	System.out.println("exception 3");
         	e.printStackTrace();
             System.out.println("Error while decrypting: " + e.toString());
         }
